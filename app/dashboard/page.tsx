@@ -23,8 +23,15 @@ export default function DashboardPage() {
 
   useEffect(() => { const t = setInterval(() => setQi(p => (p+1)%QTS.length), 6000); return () => clearInterval(t); }, []);
   useEffect(() => {
-    Promise.all([fetch("/api/scenarios/today").then(r=>r.json()), fetch("/api/profile").then(r=>r.json())])
-      .then(([s,p]) => { if (!p?.user?.stage) { router.push("/onboarding"); return; } setScenario(s); setLoading(false); })
+    Promise.all([fetch("/api/scenarios/today").then(r=>r.json()).catch(()=>null), fetch("/api/profile").then(r=>r.json()).catch(()=>null)])
+      .then(([s,p]) => { 
+        if (p?.user && !p.user.stage && !p.user.business_model) { 
+          router.push("/onboarding"); 
+          return; 
+        } 
+        setScenario(s); 
+        setLoading(false); 
+      })
       .catch(() => setLoading(false));
   }, [router]);
 

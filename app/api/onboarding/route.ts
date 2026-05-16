@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
 
   await query(
     `UPDATE users SET stage = $1, business_model = $2, domain = $3,
-     team_size = $4, current_challenge = $5, onboarding_complete = true,
+     team_size = $4, current_challenge = $5,
      updated_at = NOW()
      WHERE id = $6`,
     [stage, business_model, domain, team_size, current_challenge, userId]
