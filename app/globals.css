@@ -4,20 +4,19 @@
 @tailwind utilities;
 
 :root {
-  --bg: #1C1C1A; --bg2: #232320; --bg3: #2A2A27; --bg4: #333330;
-  --border: #3A3A36; --border2: #4A4A44;
-  --t1: #F5F0E8; --t2: #BEB8A8; --t3: #8A8478; --t4: #5C5850; --t5: #3E3C38;
-  --ac: #8B9A6B; --ac-light: #A3B27E; --ac-dark: #6B7A50;
-  --ac-bg: rgba(139,154,107,0.08); --ac-border: rgba(139,154,107,0.2);
-  --sand: #C4A56A;
+  --bg: #111110; --bg2: #1A1A18; --bg3: #222220; --bg4: #2A2A27;
+  --border: #252523; --border2: #333330;
+  --t1: #FAFAF7; --t2: #DDDDD5; --t3: #888; --t4: #555; --t5: #333;
+  --ac: #B8D45A; --ac-dark: #8B9A6B; --ac-bg: rgba(184,212,90,0.06); --ac-border: rgba(184,212,90,0.15);
+  --gold: #C4A56A; --red: #E24B4A; --green: #5A7A3A;
   --font-display: 'Fraunces','Source Serif 4',Georgia,serif;
   --font-body: 'DM Sans','Inter',system-ui,sans-serif;
   --font-mono: 'JetBrains Mono','SF Mono',monospace;
 }
 body { font-family: var(--font-body); background: var(--bg); color: var(--t1); -webkit-font-smoothing: antialiased; }
-::selection { background: rgba(139,154,107,0.25); color: var(--t1); }
+::selection { background: rgba(184,212,90,0.2); color: var(--t1); }
 ::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
 
 @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
 @keyframes spin { to { transform:rotate(360deg); } }
