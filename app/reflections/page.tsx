@@ -53,7 +53,7 @@ export default function ReflectionsPage() {
           className="flex items-center gap-3 px-4 py-3 rounded-lg text-left cursor-pointer transition-all"
           style={{ border:`0.5px solid ${sel===opt.label?"var(--ac)":"var(--border)"}`, background:sel===opt.label?"var(--ac-bg)":"var(--bg2)", color:"var(--t1)" }}>
           <span className="text-[16px]">{["💰","✨","🎯","📊"][i]}</span>
-          <div className="flex-1"><div className="font-medium text-[13px]">{opt.text?.split(" ").slice(0,4).join(" ")}</div><div className="text-[11px] mt-0.5" style={{ color:"var(--t3)" }}>{opt.text}</div></div>
+          <div className="flex-1"><div className="font-medium text-[13px]">{opt.text}</div></div>
           <div className="w-[22px] h-[22px] rounded flex items-center justify-center text-[10px] font-mono transition-all" style={{ background:sel===opt.label?"var(--ac)":"var(--bg4)", color:sel===opt.label?"var(--bg)":"var(--t4)" }}>{opt.label}</div>
         </button>
       ))}
