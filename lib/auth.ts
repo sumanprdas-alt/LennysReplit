@@ -34,7 +34,7 @@ export const authOptions: NextAuthOptions = {
         } else {
           // Sign in
           const user = await getOne(
-            "SELECT id, email, name, password_hash, onboarding_complete FROM users WHERE email = $1",
+            "SELECT id, email, name, password_hash FROM users WHERE email = $1",
             [credentials.email]
           );
           if (!user) throw new Error("No account found");
@@ -46,7 +46,6 @@ export const authOptions: NextAuthOptions = {
             id: String(user.id),
             email: user.email,
             name: user.name,
-            onboardingComplete: user.onboarding_complete,
           };
         }
       },
