@@ -1,0 +1,297 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "total_scenarios": 18,
+    "categories": ["growth", "positioning", "product", "pricing", "hiring", "gtm", "retention", "fundraising"],
+    "notes": "All scenarios extracted from Lenny's Podcast transcripts. Each represents a real decision a real company faced with a known outcome."
+  },
+  "scenarios": [
+    {
+      "id": "gamma-post-launch-plateau",
+      "situation": "You launched your AI product on Product Hunt. It won Product of the Day, Week, and Month. You're getting a few hundred signups a day but growth is flattening. There's no strong word-of-mouth — the product isn't growing on its own. You're running low on runway with a 12-person team.",
+      "context_tags": {"stage": ["seed", "series-a"], "domain": ["b2b-saas", "dev-tools", "ai"], "team_size": ["6-15"]},
+      "options": [
+        {"label": "A", "text": "Double down on paid acquisition — fuel the top of funnel with ads and marketing to keep signups growing"},
+        {"label": "B", "text": "Stop everything and rebuild the first 30 seconds of the product to create a magical onboarding experience that drives word-of-mouth"},
+        {"label": "C", "text": "Pivot the product positioning to target a more specific niche where you can dominate"}
+      ],
+      "what_happened": "Grant Lee and the Gamma team chose B. They spent 3-4 months completely revamping the onboarding, making AI central to the first 30 seconds. When they relaunched, signups went from a few hundred to thousands, then 5,000, then 10,000, then 20,000 per day — all organic, zero advertising. Grant says choosing paid acquisition would have been 'a trap — trying to brute force our way into product market fit that would always be fleeting.'",
+      "guest": "Grant Lee",
+      "episode_title": "\"Dumbest idea I've heard\" to $100M ARR: Inside the rise of Gamma",
+      "decision_category": "growth",
+      "lesson": "Product-market fit isn't something you can buy with ads. If organic word-of-mouth isn't happening, the product needs to change, not the marketing budget. Invest in making the first experience magical before scaling distribution.",
+      "market_anchor": "In the current AI landscape, many startups are launching products that get initial buzz but plateau. The temptation to spend on ads to maintain growth curves is stronger than ever."
+    },
+    {
+      "id": "slack-do-not-disturb",
+      "situation": "You're building a workplace communication tool used by millions. You're adding a Do Not Disturb feature. The design question: when someone messages a user who has DND enabled, do you (a) silently suppress the notification and just show it later, or (b) tell the sender that the person has DND on and offer an option to notify them anyway for urgent messages?",
+      "context_tags": {"stage": ["series-a", "series-b", "growth"], "domain": ["b2b-saas", "dev-tools"], "team_size": ["16-50", "50+"]},
+      "options": [
+        {"label": "A", "text": "Silently suppress — respect the user's DND without creating friction for the sender"},
+        {"label": "B", "text": "Show DND status and offer an override button — let the sender decide if it's urgent enough to break through"},
+        {"label": "C", "text": "Let the DND user set rules for who can break through (manager, direct reports, etc.)"}
+      ],
+      "what_happened": "Stewart Butterfield and Slack chose B — but the nuance is what matters. They realized both the DND-setter AND the sender had legitimate needs. The sender seeing 'This person has notifications paused' with a 'Notify anyway' option actually made DND more powerful, not weaker. People were more willing to turn on DND knowing that truly urgent messages could still reach them. Stewart calls this thinking about utility curves — where adding a feature for one person creates value (or destroys it) for another.",
+      "guest": "Stewart Butterfield",
+      "episode_title": "Slack founder: Mental models for building products people love",
+      "decision_category": "product",
+      "lesson": "Great product decisions consider the utility curves of ALL affected users, not just the primary user of a feature. Sometimes giving people an escape valve makes them more willing to commit to a constraint.",
+      "market_anchor": "As AI tools add more autonomous features that act on users' behalf, the question of when to override automation for human urgency is becoming central to product design."
+    },
+    {
+      "id": "canva-100-rejections",
+      "situation": "You've pitched over 100 investors for your startup. Every single one has said no. Common objections: 'Your market isn't big enough,' 'You're the same as competitors,' 'You can't beat incumbents with massive distribution.' You believe deeply in the vision but have zero external validation from the funding market.",
+      "context_tags": {"stage": ["pre-seed", "seed"], "domain": ["b2c", "b2b-saas", "dev-tools"], "team_size": ["1", "2-5"]},
+      "options": [
+        {"label": "A", "text": "Take the feedback seriously — if 100 smart investors say no, maybe the market or approach needs to change"},
+        {"label": "B", "text": "Keep pitching but incorporate the feedback — add slides addressing each objection to make the pitch stronger"},
+        {"label": "C", "text": "Stop fundraising, bootstrap, and prove the market exists with revenue before going back to investors"}
+      ],
+      "what_happened": "Melanie Perkins chose B — but with a critical mindset. She believed the investors were wrong about the market but right that her pitch wasn't convincing enough. Each rejection taught her something: when investors said 'market too small,' she added a slide on TAM. When they said 'same as competitors,' she added a competitive landscape slide showing the gap. She treated rejections as free pitch coaching. Canva is now valued at $42B with $3.3B annual revenue, profitable for 8 consecutive years.",
+      "guest": "Melanie Perkins",
+      "episode_title": "The woman behind Canva shares how she built a $42B company from nothing",
+      "decision_category": "fundraising",
+      "lesson": "Investor rejection is information, not a verdict. The key distinction Melanie made: she separated feedback on her pitch (actionable) from feedback on her vision (she trusted her own conviction). Most founders either ignore all feedback or accept all of it. The skill is knowing which parts to internalize.",
+      "market_anchor": "In today's AI funding environment, many founders face the same dynamic — investors saying 'this is a feature, not a company' or 'incumbents will build this.' The question of when to persist vs. pivot is as relevant as ever."
+    },
+    {
+      "id": "ben-horowitz-hesitation",
+      "situation": "You're a startup CEO. You know you need to make a big organizational change — maybe a firing, a restructure, a pivot, a price increase. You have the information, you've done the analysis, but you keep delaying the decision. You tell yourself you need more data, more time to think, one more quarter to see if things improve.",
+      "context_tags": {"stage": ["seed", "series-a", "series-b", "growth"], "domain": ["b2b-saas", "b2c", "marketplace", "dev-tools", "fintech", "health"], "team_size": ["2-5", "6-15", "16-50", "50+"]},
+      "options": [
+        {"label": "A", "text": "Wait and gather more information — making a premature decision could be worse than the delay"},
+        {"label": "B", "text": "Act now with the information you have — the cost of delay exceeds the cost of being imperfect"},
+        {"label": "C", "text": "Set a hard deadline — give yourself 2 weeks to make the call, then commit regardless"}
+      ],
+      "what_happened": "Ben Horowitz says B is almost always the right answer, and hesitation is 'the worst thing you do as a leader.' He learned this from a pilot's story: in flying, a pilot who freezes kills everyone. A pilot who makes a slightly wrong decision can correct. The same applies to leadership. He argues that most leaders rationalize delay as prudence, but the information they're waiting for almost never changes the fundamental calculus. The damage compounds daily while you hesitate — team morale erodes, competitors move, the window closes.",
+      "guest": "Ben Horowitz",
+      "episode_title": "$46B of hard truths from Ben Horowitz",
+      "decision_category": "product",
+      "lesson": "Hesitation is the most destructive force in leadership. It feels like caution but functions as cowardice. The pilot's rule: a wrong decision is recoverable; no decision is often not. If you have 70% of the information you need, act.",
+      "market_anchor": "In the current AI transition, many leaders are frozen on whether to restructure their teams, pivot their products, or adopt AI tooling. The cost of waiting is compounding daily."
+    },
+    {
+      "id": "jason-cohen-growth-stall",
+      "situation": "Your SaaS product has been growing steadily for 2 years but growth has stalled. You're not shrinking — new customers are coming in, but the rate has plateaued. Your team is proposing three different theories: it's a product problem (features), a marketing problem (awareness), or a pricing problem (value capture).",
+      "context_tags": {"stage": ["series-a", "series-b"], "domain": ["b2b-saas", "dev-tools"], "team_size": ["6-15", "16-50"]},
+      "options": [
+        {"label": "A", "text": "Build more features to increase the product's value proposition and appeal to a wider market"},
+        {"label": "B", "text": "Invest in marketing and distribution — you have a great product that not enough people know about"},
+        {"label": "C", "text": "Audit your pricing and positioning first — maybe you're capturing the wrong value or talking to the wrong buyers"}
+      ],
+      "what_happened": "Jason Cohen, who built two unicorns including WP Engine, says the answer is almost always C first. His framework: ask '5 questions when your product stops growing.' The first is 'Is the positioning right?' — not the features, not the marketing, but whether you're describing the value correctly to the right buyer. He's seen companies where a positioning change (not a product change) 2-3x'd growth because they were solving a real problem but describing it in a way that didn't resonate with decision-makers.",
+      "guest": "Jason Cohen",
+      "episode_title": "5 questions to ask when your product stops growing",
+      "decision_category": "positioning",
+      "lesson": "When growth stalls, the instinct is to build more or spend more. But the cheapest, fastest lever is usually positioning — how you describe what you already have. Features take months to build. Positioning changes take days and can have immediate impact.",
+      "market_anchor": "With hundreds of AI tools launching weekly, many solid products are stalling not because they're bad, but because they sound like everything else. Positioning has never been more critical."
+    },
+    {
+      "id": "lovable-retention-social",
+      "situation": "Your product-led growth SaaS has strong acquisition — people sign up, they try it, many of them pay. But retention at 90 days is mediocre. Users churn after the initial excitement fades. Your growth team proposes investing in social/community features to increase engagement, but your engineering team argues you should focus on making the core product more powerful.",
+      "context_tags": {"stage": ["seed", "series-a", "series-b"], "domain": ["b2b-saas", "b2c", "dev-tools", "ai"], "team_size": ["6-15", "16-50"]},
+      "options": [
+        {"label": "A", "text": "Focus on core product improvements — if the product is powerful enough, people won't leave"},
+        {"label": "B", "text": "Build social features — let users see what others are creating, share work, follow each other"},
+        {"label": "C", "text": "Invest in personalization — make the product adapt to each user's specific needs over time"}
+      ],
+      "what_happened": "Elena Verna at Lovable chose B — and it worked dramatically. She found that social notifications ('your friend just built something on Lovable') were a more powerful reengagement lever than product improvements. Users logged in to see what others were creating, which pulled them back into their own work. Instead of sending 'here's what's new' emails, they sent 'here's what your network is doing' — turning the product from a solo tool into a community experience. Lovable hit $200M ARR in under a year.",
+      "guest": "Elena Verna",
+      "episode_title": "Elena Verna 4.0",
+      "decision_category": "retention",
+      "lesson": "Retention isn't always about making the product better — sometimes it's about making the user feel connected. Social proof and network effects can drive reengagement more powerfully than feature improvements. The product can be the same; the context around it changes everything.",
+      "market_anchor": "Most AI tools are built as solo experiences. The ones adding social layers — seeing what others build, sharing outputs — are seeing significantly better retention."
+    },
+    {
+      "id": "airtable-ai-restructure",
+      "situation": "You're the CEO of a 10-year-old, successful SaaS company. AI is changing your entire market. You need to fundamentally restructure your organization and product for AI, but your existing product still has millions of paying users who expect it to work the way it does. Your team is large and many people were hired for the pre-AI era.",
+      "context_tags": {"stage": ["series-b", "growth"], "domain": ["b2b-saas", "dev-tools"], "team_size": ["50+"]},
+      "options": [
+        {"label": "A", "text": "Create a separate AI team that builds new AI-native products while the main team maintains the existing product"},
+        {"label": "B", "text": "Restructure the entire company around AI — everyone shifts to AI-first thinking, even if it disrupts the existing product"},
+        {"label": "C", "text": "Gradually layer AI features into the existing product without reorganizing — evolution, not revolution"}
+      ],
+      "what_happened": "Howie Liu at Airtable chose B — a full company restructure around AI. He broke down role silos, made AI everyone's job (not a separate team), and accepted that the transition would be painful. His reasoning: a separate AI team creates a 'two-speed' company where the legacy team resists change and the AI team can't leverage the existing product's distribution. The full restructure meant short-term disruption but ensured AI wasn't bolted on — it was built in. He compared it to CEOs who need to 'almost become the head of product again' during existential transitions.",
+      "guest": "Howie Liu",
+      "episode_title": "How we restructured Airtable's entire org for AI",
+      "decision_category": "product",
+      "lesson": "When the market shifts fundamentally, incremental adaptation loses. A separate innovation team creates organizational antibodies. The painful path — full restructure — is usually the only one that works because it forces everyone to live in the new reality instead of protecting the old one.",
+      "market_anchor": "Every established SaaS company is facing this exact decision right now. The AI transition is forcing CEOs to choose between protecting their existing business and rebuilding for the future."
+    },
+    {
+      "id": "jen-abel-enterprise-sales",
+      "situation": "You're a technical founder who just closed your first few enterprise deals by doing sales yourself. Revenue is growing. A board member suggests you hire an experienced VP of Sales to scale. But the deals you've closed are all based on personal relationships and deep product knowledge — you're not sure a salesperson could replicate what you do.",
+      "context_tags": {"stage": ["seed", "series-a"], "domain": ["b2b-saas", "dev-tools", "fintech"], "team_size": ["2-5", "6-15"]},
+      "options": [
+        {"label": "A", "text": "Hire a VP of Sales — you need to focus on product and let a professional scale the sales motion"},
+        {"label": "B", "text": "Keep doing founder-led sales but hire a junior AE to handle follow-ups and admin so you can do more of it"},
+        {"label": "C", "text": "Don't hire anyone yet — first document your sales process so that it's repeatable, then hire someone to run it"}
+      ],
+      "what_happened": "Jen Abel says C is the only right answer at this stage, and she's seen hundreds of founders get this wrong. Her framework: 'Sell the alpha, not the feature.' Founders who hire a VP of Sales before they've documented a repeatable process are hiring someone to figure out something the founder hasn't figured out yet — and the VP will fail. First, you need to understand your own sales motion: what questions unlock the buyer, what objections come up, what the aha moment looks like. Document it. Then hire someone to run that playbook, not to invent one.",
+      "guest": "Jen Abel",
+      "episode_title": "Sell the alpha, not the feature: The enterprise sales playbook",
+      "decision_category": "gtm",
+      "lesson": "Don't outsource what you haven't understood yourself. The founder's job isn't to do sales forever — it's to crack the code of the sales motion and then hand off a documented, repeatable process. Hiring a sales leader before that process exists is the most expensive mistake in B2B.",
+      "market_anchor": "AI startups are closing their first enterprise deals faster than ever, creating pressure to hire sales teams prematurely. The playbook-first approach is even more critical in a market where the buyer doesn't fully understand the product category yet."
+    },
+    {
+      "id": "duolingo-hidden-growth",
+      "situation": "Your consumer app has millions of users. You've optimized the main user journey extensively — onboarding, core loop, notifications. Growth has become incremental. Your team wants to build a major new feature to drive the next wave of growth. But an analyst on your team has found that there might be an overlooked existing feature that's underperforming — it's used by 5% of users but the ones who use it retain 3x better.",
+      "context_tags": {"stage": ["series-a", "series-b", "growth"], "domain": ["b2c", "b2b-saas", "ai"], "team_size": ["16-50", "50+"]},
+      "options": [
+        {"label": "A", "text": "Build the new feature — you've already optimized existing features, you need something fresh to drive growth"},
+        {"label": "B", "text": "Investigate and optimize the underperforming feature — if those 5% retain 3x better, getting more people to discover it could be a bigger lever"},
+        {"label": "C", "text": "Do both — split the team and work on both in parallel"}
+      ],
+      "what_happened": "Albert Cheng at Duolingo says B is almost always the higher-ROI play. He describes Duolingo's approach of 'finding hidden growth opportunities' inside the existing product. Social notifications, friend features, and streak mechanics were all features that existed in a basic form but were used by a small minority. By optimizing their discovery and experience — not building something new — Duolingo found massive growth levers. The insight: your next growth unlock is probably already in your product, just undiscovered by most users.",
+      "guest": "Albert Cheng",
+      "episode_title": "How to find hidden growth opportunities in your product",
+      "decision_category": "growth",
+      "lesson": "Before building new features for growth, audit what you already have. The features used by your best-retaining users are growth levers hiding in plain sight. Getting more users to discover existing high-retention features is faster, cheaper, and higher-conviction than building something new.",
+      "market_anchor": "As AI products mature beyond their initial launch hype, growth teams are learning that optimization of existing features often beats net-new feature development for driving the next growth curve."
+    },
+    {
+      "id": "anthropic-ship-fast",
+      "situation": "You're the head of product at a fast-growing AI company. Your team wants to ship a new product feature, but it's not fully polished — there are edge cases, the UX isn't perfect, and some team members worry it'll embarrass the company. The competitive landscape is moving incredibly fast and three competitors are working on similar features.",
+      "context_tags": {"stage": ["series-a", "series-b", "growth"], "domain": ["ai", "dev-tools", "b2b-saas"], "team_size": ["6-15", "16-50", "50+"]},
+      "options": [
+        {"label": "A", "text": "Ship it now as a 'research preview' or beta — get it in users' hands and iterate based on real feedback"},
+        {"label": "B", "text": "Take 4 more weeks to polish — first impressions matter and you don't want to ship something that feels broken"},
+        {"label": "C", "text": "Ship it to a small % of users as an A/B test — limit the blast radius while getting real data"}
+      ],
+      "what_happened": "Cat Wu at Anthropic describes how their product team consistently chooses A — shipping early as a research preview, explicitly telling users it's not ready for everyone. Claude Code itself was a small experiment that the company didn't expect to be as popular as it turned out. Eric Ries, in a separate episode, points out that ChatGPT, Claude Code, and Cowork were all 'small experiments in the grand scheme of things — not the companies' big bets.' The lesson: the products that take the world by storm are rarely the ones companies thought would be their flagship.",
+      "guest": "Cat Wu",
+      "episode_title": "How Anthropic's product team moves faster than anyone else",
+      "decision_category": "product",
+      "lesson": "Ship early, label it honestly, and iterate. The products that change the world are rarely the ones you planned — they're the small experiments you shipped fast. Perfectionism kills more products than imperfection does. The market will tell you what matters far faster than internal debate will.",
+      "market_anchor": "The fastest-growing AI products of 2025-2026 were all shipped as research previews or MVPs. The companies that waited to polish lost the window."
+    },
+    {
+      "id": "slack-to-salesforce-pivot",
+      "situation": "Your company built a product that people love but it's a video game — a market with brutal competition and uncertain monetization. However, the internal tool you built for team communication during development is getting more interest from outside companies than the game itself. Your team of 45 people is emotionally invested in the game. Do you kill the game and pivot to the communication tool?",
+      "context_tags": {"stage": ["seed", "series-a"], "domain": ["b2c", "b2b-saas", "dev-tools"], "team_size": ["16-50"]},
+      "options": [
+        {"label": "A", "text": "Pivot fully — kill the game and build the communication tool into a product. The market is telling you something."},
+        {"label": "B", "text": "Run both in parallel — keep a small team on the game while building out the communication tool"},
+        {"label": "C", "text": "Stay the course on the game — internal tools rarely become great products and your team's passion is in the game"}
+      ],
+      "what_happened": "Stewart Butterfield chose A — he shut down Glitch (the game) and pivoted the entire company to Slack. It was painful: the game had a devoted community of players who 'loved it and would spend all of their free time playing it.' Shutting it down destroyed that community. But Butterfield recognized that emotional attachment to the game was 'the owner's delusion' — loving your product isn't the same as it being a viable business. Slack went on to sell to Salesforce for $27.7 billion.",
+      "guest": "Stewart Butterfield",
+      "episode_title": "Slack founder: Mental models for building products people love",
+      "decision_category": "product",
+      "lesson": "When the side project gets more traction than the main product, that's not a distraction — that's the market telling you what it wants. The hardest part of pivoting isn't strategy, it's killing something your team loves. Stewart calls the inability to see this clearly 'the owner's delusion.'",
+      "market_anchor": "Many AI builders today are seeing their side tools gain more traction than their main product. The pivot decision — especially when it means abandoning something the team is emotionally invested in — is one of the hardest calls a founder makes."
+    },
+    {
+      "id": "canva-column-b-thinking",
+      "situation": "You're planning your product roadmap for the next year. You have limited resources and need to choose between two approaches: (A) look at what you have today — your current tech, team, and market position — and figure out what you can realistically build from here, or (B) envision the ideal future state of your product category in 5 years and work backwards from that vision, even though you have no idea how to get there.",
+      "context_tags": {"stage": ["pre-seed", "seed", "series-a", "series-b"], "domain": ["b2b-saas", "b2c", "dev-tools", "ai"], "team_size": ["1", "2-5", "6-15", "16-50"]},
+      "options": [
+        {"label": "A", "text": "Work from reality — look at the bricks you have and build the best thing you can with them"},
+        {"label": "B", "text": "Work from vision — imagine the castle on the hill, then figure out how to build it, even if you feel completely inadequate"}
+      ],
+      "what_happened": "Melanie Perkins calls this 'Column B thinking' and credits it as the single biggest factor in Canva's success. Column A — working from what you have — leads to incremental improvements. Column B — working from the ideal future — leads to transformative products. She admits that 'you feel completely inadequate before a Column B goal,' which is exactly the point: the discomfort means the goal is big enough to be worth pursuing. Column A for Canva would have been 'nothing, because I was a university student with no experience.' Column B was imagining what publishing and design would look like in the future.",
+      "guest": "Melanie Perkins",
+      "episode_title": "The woman behind Canva shares how she built a $42B company from nothing",
+      "decision_category": "product",
+      "lesson": "Most planning is Column A — looking at what you have and trying to stack it. Column B planning starts with the future you want to create, then works backward. Column A produces incrementalism. Column B produces companies like Canva. The feeling of inadequacy before a goal is a signal that the goal is big enough.",
+      "market_anchor": "AI is creating a Column B moment for every product category. The founders who are imagining what their category looks like in 5 years with AI — rather than just adding AI features to today's product — are building the next generation of iconic companies."
+    },
+    {
+      "id": "scale-ai-enterprise-bet",
+      "situation": "You're running a fast-growing AI company. Your consumer product is taking off, but a huge enterprise deal comes in — a single contract worth more than months of consumer revenue. Taking it means redirecting engineering resources from the consumer product to build enterprise features. Your team is small and can't do both well.",
+      "context_tags": {"stage": ["series-a", "series-b"], "domain": ["ai", "b2b-saas", "dev-tools"], "team_size": ["6-15", "16-50"]},
+      "options": [
+        {"label": "A", "text": "Take the enterprise deal — the revenue provides runway and validation, and you can return to consumer later"},
+        {"label": "B", "text": "Decline the deal — consumer momentum is fragile and diverting resources will kill your flywheel"},
+        {"label": "C", "text": "Negotiate a longer timeline on the enterprise deal so you can staff up before diverting the core team"}
+      ],
+      "what_happened": "Jason Droege at Scale AI describes how they took the enterprise bet (option A) with their massive Meta deal — and it paid off enormously. The $14B Meta deal became the foundation for a sustainable enterprise business. But the key insight is that they didn't abandon consumer entirely — they used the enterprise revenue to fund the growth of both. The decision worked because the enterprise work deepened their moat (data labeling expertise) in ways that also benefited the consumer product.",
+      "guest": "Jason Droege",
+      "episode_title": "First interview with Scale AI's CEO",
+      "decision_category": "gtm",
+      "lesson": "Enterprise deals can be transformative if they deepen your moat rather than just providing revenue. The question isn't 'consumer vs. enterprise' — it's 'does this enterprise work make our core product better for everyone, or does it create a branch we can never merge back?'",
+      "market_anchor": "AI startups are facing this consumer-vs-enterprise tension constantly. Many successful companies — Anthropic, OpenAI, Scale — have found that enterprise revenue funds consumer innovation, but only when the enterprise work strengthens the core technology."
+    },
+    {
+      "id": "eric-ries-protect-company",
+      "situation": "Your startup is finally successful. Revenue is growing, you have strong product-market fit, and investors want to give you more money at a higher valuation. But you've heard horror stories about founders losing control — boards pushing for growth that destroys the product, investors prioritizing short-term metrics over long-term quality. How do you protect what you've built?",
+      "context_tags": {"stage": ["series-a", "series-b", "growth"], "domain": ["b2b-saas", "b2c", "marketplace", "dev-tools", "fintech", "ai"], "team_size": ["6-15", "16-50", "50+"]},
+      "options": [
+        {"label": "A", "text": "Standard approach — take the money, trust the board, focus on execution. Most companies work fine."},
+        {"label": "B", "text": "Negotiate structural protections now — dual-class shares, founder-friendly board composition, charter provisions that protect the mission"},
+        {"label": "C", "text": "Stay bootstrapped or raise less — maintain control by not giving it away"}
+      ],
+      "what_happened": "Eric Ries argues passionately for B, using Anthropic as a case study. Anthropic wrote mission-protection into their corporate charter — independent trustees who are AI safety experts sit on the board with no equity incentive to compromise. Ries says the 'financial gravity' that corrupts companies isn't about bad people — it's structural. Without structural protections, the incentives will eventually override the mission. He uses a vivid analogy: you can taste when a restaurant has been taken over by private equity. That corruption is the same force, and it's predictable and preventable.",
+      "guest": "Eric Ries",
+      "episode_title": "How to build a company that withstands any era",
+      "decision_category": "fundraising",
+      "lesson": "Company corruption isn't caused by bad people — it's caused by bad structures. The time to build protections is when you don't need them — when things are going well and investors are eager. By the time you need the protections, it's too late to negotiate them. The organizational equivalent of stainless steel bolts.",
+      "market_anchor": "As AI companies raise massive rounds at astronomical valuations, the question of founder control and mission protection has never been more urgent. The companies that will define AI's impact on society are making structural governance decisions right now."
+    },
+    {
+      "id": "lemkin-ai-sales-agents",
+      "situation": "You're running a B2B SaaS company with a traditional sales team of 15 SDRs and 10 AEs. AI sales tools have gotten remarkably good — they can handle outbound, qualification, and even initial demos. One of your competitors just announced they replaced half their sales team with AI agents. Your board is pressuring you to cut costs.",
+      "context_tags": {"stage": ["series-a", "series-b", "growth"], "domain": ["b2b-saas"], "team_size": ["16-50", "50+"]},
+      "options": [
+        {"label": "A", "text": "Replace your SDR team with AI agents — they're the most automatable role and it'll cut costs dramatically"},
+        {"label": "B", "text": "Augment, don't replace — give your existing team AI tools to be more productive, but keep the humans"},
+        {"label": "C", "text": "Wait and see — the technology isn't proven enough at enterprise scale and you can't risk your pipeline"}
+      ],
+      "what_happened": "Jason Lemkin describes how companies are successfully deploying AI agents to replace SDR functions — outbound, qualification, scheduling — but warns that the AE role (closing) is much harder to automate because enterprise buyers need human trust and negotiation. The companies winning are doing a hybrid: AI handles the top-of-funnel volume work, freeing human AEs to focus exclusively on closing and relationship-building. The mistake is thinking it's all-or-nothing.",
+      "guest": "Jason M Lemkin",
+      "episode_title": "We replaced our sales team with 20 AI agents — here's what happened",
+      "decision_category": "hiring",
+      "lesson": "AI in sales isn't about replacing humans — it's about restructuring which work humans do. Automate the volume work (outbound, qualification). Protect the trust work (closing, relationships). The companies that eliminate all humans lose deals at the bottom of the funnel. The companies that don't automate anything lose on efficiency.",
+      "market_anchor": "The AI sales agent market is exploding in 2026. Every B2B company is facing this decision now, and the wrong move — either direction — can be costly."
+    },
+    {
+      "id": "molly-graham-giving-away-legos",
+      "situation": "Your startup just raised a Series A. You need to hire senior leaders — a VP of Engineering, Head of Marketing, maybe a COO. But your current team of early employees built everything and they're deeply attached to their work. Bringing in senior hires means asking your early team to give up ownership of areas they created. Two of your best engineers have already expressed concern about 'losing their legos.'",
+      "context_tags": {"stage": ["seed", "series-a", "series-b"], "domain": ["b2b-saas", "b2c", "dev-tools", "ai", "fintech"], "team_size": ["6-15", "16-50"]},
+      "options": [
+        {"label": "A", "text": "Promote from within — your early employees know the company best and have earned the leadership roles"},
+        {"label": "B", "text": "Hire externally and help early employees transition — they need to 'give away their legos' for the company to scale"},
+        {"label": "C", "text": "Create new roles that let early employees keep their current scope while senior hires build new areas"}
+      ],
+      "what_happened": "Molly Graham, who led operations through hypergrowth at Google, Facebook, and Quip, says B is the answer — but the HOW matters more than the WHAT. Her famous framework: at a scaling company, everyone must constantly 'give away their legos.' The job you were hired for 6 months ago shouldn't be the job you're doing now. If you're still building the same thing, the company hasn't grown around you. The leader's job is to help people see that giving away legos isn't losing — it's the prerequisite for getting bigger, better legos.",
+      "guest": "Molly Graham",
+      "episode_title": "The high-growth handbook: Molly Graham's frameworks for leading through chaos",
+      "decision_category": "hiring",
+      "lesson": "Scaling requires everyone to continuously give away their legos. Early employees who can't let go become bottlenecks. But the failure is usually the leader's, not the employee's — if you haven't framed growth as getting bigger legos, people will experience it as loss. The best leaders make giving away feel like graduating.",
+      "market_anchor": "AI startups are scaling faster than any previous generation of companies, compressing the lego-giving cycle. What used to happen over 3 years is happening in 6 months, making this transition even more emotionally charged."
+    },
+    {
+      "id": "keith-rabois-ai-moat",
+      "situation": "You're building an AI startup and investors keep asking about your moat. Your product uses a foundation model (Claude, GPT) — you don't have proprietary AI. Competitors can build something similar quickly. A prominent VC publicly said 'most AI apps are just thin wrappers' and won't fund companies without a defensible moat.",
+      "context_tags": {"stage": ["pre-seed", "seed", "series-a"], "domain": ["ai", "dev-tools", "b2b-saas"], "team_size": ["1", "2-5", "6-15"]},
+      "options": [
+        {"label": "A", "text": "Accept it and compete on speed — be first to market, iterate faster than everyone, build brand before they catch up"},
+        {"label": "B", "text": "Build proprietary data or fine-tuned models — invest in a technical moat that can't be easily replicated"},
+        {"label": "C", "text": "Build the moat through workflow integration — become so embedded in the user's process that switching costs are high"}
+      ],
+      "what_happened": "Keith Rabois at Khosla Ventures argues the real moat in the AI era is distribution and workflow integration (option C). He says most technical moats in AI are temporary — models improve, open-source catches up, and your fine-tuned advantage evaporates. What endures is being the tool people can't remove from their daily workflow. Rabois points to companies that won not by having the best technology, but by being the most embedded in the user's process — making the switching cost emotional and behavioral, not just technical.",
+      "guest": "Keith Rabois",
+      "episode_title": "Hard truths about building in the AI era",
+      "decision_category": "positioning",
+      "lesson": "In the AI era, technical moats are temporary. The enduring moat is becoming part of the workflow. The question isn't 'what can competitors not build?' — it's 'what would users have to rip out of their daily process to switch?' Build for integration depth, not model sophistication.",
+      "market_anchor": "The 'thin wrapper' debate continues in 2026. Companies like Cursor, Gamma, and Lovable have proven that distribution and workflow integration can be powerful moats even without proprietary models."
+    },
+    {
+      "id": "evan-spiegel-distribution-moat",
+      "situation": "You're building a consumer product. You have a great product experience but growth is slower than expected. Your head of growth suggests focusing on SEO, content marketing, and paid acquisition. But you notice that your most engaged users are creating content inside your product that other people want to see — there's a latent distribution loop inside the product itself that you haven't optimized for.",
+      "context_tags": {"stage": ["seed", "series-a", "series-b"], "domain": ["b2c", "ai", "b2b-saas"], "team_size": ["2-5", "6-15", "16-50"]},
+      "options": [
+        {"label": "A", "text": "Invest in traditional growth channels — SEO, content, paid. They're proven and predictable."},
+        {"label": "B", "text": "Double down on the product's natural distribution loop — make the content users create more shareable and discoverable"},
+        {"label": "C", "text": "Build a creator program — incentivize your best users to create and share content that brings in new users"}
+      ],
+      "what_happened": "Evan Spiegel describes how Snapchat's most powerful growth lever was never traditional marketing — it was making the content created inside the product inherently shareable and valuable. Distribution became the moat, not the product features. He argues that in today's landscape, distribution has become the most important moat, more important than the product itself. The product enables the distribution loop, but it's the distribution loop that creates the defensibility.",
+      "guest": "Evan Spiegel",
+      "episode_title": "Snapchat CEO: Why distribution has become the most important moat",
+      "decision_category": "growth",
+      "lesson": "The most powerful growth channel is the one built into your product's core usage pattern. External marketing is rented. Product-driven distribution is owned. If users naturally create things other people want to see, your job is to make that sharing frictionless — not to build a separate marketing engine.",
+      "market_anchor": "AI tools that generate shareable outputs — presentations, images, apps, documents — have a natural distribution loop that most aren't fully exploiting. The product IS the marketing channel."
+    }
+  ]
+}
