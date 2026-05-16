@@ -80,12 +80,13 @@ Respond in this exact JSON format:
     `FOUNDER'S INPUT:\n${truncatedInput}\n\n${formattedChunks ? `RELEVANT WISDOM FROM LENNY'S ARCHIVE:\n${formattedChunks}` : "No specific segments retrieved."}`,
     1024
     );
-  } catch (parseError) {
-    console.error("Claude parse error:", parseError);
+  } catch (parseError: any) {
+    console.error("Claude parse error:", parseError?.message || parseError);
+    console.error("Full error:", JSON.stringify(parseError, null, 2));
     return NextResponse.json({
       blind_spots: [{
         title: "The Sage needs a moment",
-        explanation: "The analysis couldn't be fully structured this time. Try rephrasing your input with more specific context about the decision you're facing.",
+        explanation: `Error: ${parseError?.message || "Unknown error"}. Try rephrasing your input with more specific context about the decision you're facing.`,
         guest: "The Sage",
         episode: "",
         guest_insight: "Sometimes the most useful thing is to reframe the question."
