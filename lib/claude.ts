@@ -10,7 +10,7 @@ export async function callClaude(
   maxTokens: number = 1024
 ): Promise<string> {
   const response = await anthropic.messages.create({
-    model: "claude-3-haiku-20240307",
+    model: "claude-3-5-haiku-latest",
     max_tokens: maxTokens,
     system: systemPrompt,
     messages: [{ role: "user", content: userMessage }],
