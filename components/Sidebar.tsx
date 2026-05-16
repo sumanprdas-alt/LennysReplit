@@ -1,5 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 
 const NAV = [
@@ -45,8 +46,14 @@ export default function Sidebar() {
           })}
         </div>
       ))}
-      <div className="mt-auto px-3 py-2.5 border-t" style={{ borderColor: "var(--border)" }}>
-        <p className="text-[7px] leading-relaxed" style={{ color: "var(--t5)" }}>Powered with valuable insights<br/>from Lenny's Podcast</p>
+      <div className="mt-auto">
+        <button onClick={() => signOut({ callbackUrl: "/" })} className="w-full flex items-center gap-[6px] px-3 py-[5px] text-[10px] cursor-pointer" style={{ color: "var(--t5)", background: "none", border: "none" }}>
+          <span className="text-[11px]">↩</span>
+          <span>Sign out</span>
+        </button>
+        <div className="px-3 py-2.5 border-t" style={{ borderColor: "var(--border)" }}>
+          <p className="text-[7px] leading-relaxed" style={{ color: "var(--t5)" }}>Powered with valuable insights<br/>from Lenny's Podcast</p>
+        </div>
       </div>
     </div>
   );
