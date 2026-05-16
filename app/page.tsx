@@ -87,7 +87,6 @@ export default function LandingPage() {
 
       {/* Social proof */}
       <div className="relative z-10 text-center pb-4 fade-up-4">
-        <p className="font-mono text-[10px] tracking-[2px] mb-3" style={{ color: "var(--t4)" }}>BUILT FOR BUILDERS. INSPIRED BY LENNY'S PODCAST.</p>
         <p className="text-[13px]" style={{ color: "var(--t3)" }}>Powered with valuable insights from Lenny's Podcast</p>
       </div>
 
