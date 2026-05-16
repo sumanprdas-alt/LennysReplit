@@ -40,8 +40,8 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden" style={{ background: "var(--bg)", color: "var(--t1)" }}>
       {/* Background image */}
-      <div className="absolute inset-0" style={{ backgroundImage: "url('/hero-bg.jpg')", backgroundSize: "120%", backgroundPosition: "center 60%", pointerEvents: "none" }} />
-      <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(28,28,26,0.82) 0%, rgba(28,28,26,0.65) 40%, rgba(28,28,26,0.88) 100%)", pointerEvents: "none" }} />
+      <div className="absolute inset-0" style={{ backgroundImage: "url('/hero-bg.jpg')", backgroundSize: "110%", backgroundPosition: "center 60%", pointerEvents: "none" }} />
+      <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(28,28,26,0.75) 0%, rgba(28,28,26,0.55) 40%, rgba(28,28,26,0.82) 100%)", pointerEvents: "none" }} />
       <div className="absolute inset-0 opacity-[.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")", pointerEvents: "none" }} />
 
       {/* Nav */}
