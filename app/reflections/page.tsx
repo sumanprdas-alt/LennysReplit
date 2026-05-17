@@ -9,10 +9,20 @@ export default function ReflectionsPage() {
   const [reasoning, setReasoning] = useState("");
   const [reveal, setReveal] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [totalSc, setTotalSc] = useState(0);
   const [submitting, setSubmitting] = useState(false);
   const router = useRouter();
 
-  useEffect(() => { fetch("/api/scenarios/today").then(r => r.json()).then(d => { setScenario(d); setLoading(false); }); }, []);
+  useEffect(() => { 
+    Promise.all([
+      fetch("/api/scenarios/today").then(r => r.json()).catch(() => null),
+      fetch("/api/profile").then(r => r.json()).catch(() => null)
+    ]).then(([s, p]) => { 
+      setScenario(s); 
+      setTotalSc(p?.profile?.total_scenarios || 0);
+      setLoading(false); 
+    }); 
+  }, []);
 
   const handleSubmit = async () => {
     if (!sel || !scenario) return; setSubmitting(true);
@@ -26,8 +36,13 @@ export default function ReflectionsPage() {
   if (loading) return <Shell><div className="flex-1 flex items-center justify-center"><p style={{ color: "var(--t4)" }}>Loading...</p></div></Shell>;
 
   if (reveal) return <Shell><div className="flex-1 p-6 max-w-[640px]">
-    <p className="font-mono text-[8px] tracking-[1px] fade-up" style={{ color: "var(--t5)" }}>REFLECTION RESULT</p>
-    <h2 className="font-display text-[20px] font-normal mt-2 fade-up-1">You aligned with <span className="italic" style={{ color: "var(--ac)" }}>the builder.</span></h2>
+    <div className="text-center mb-6 fade-up">
+      <div className="inline-flex items-center justify-center w-12 h-12 rounded-full mb-3" style={{ background: "var(--ac-bg)", border: "1px solid var(--ac-border)" }}>
+        <span className="text-[20px]">{reveal.calibration_correct ? "🎯" : "🔄"}</span>
+      </div>
+      <p className="font-mono text-[8px] tracking-[1px]" style={{ color: "var(--t5)" }}>REFLECTION RESULT</p>
+      <h2 className="font-display text-[20px] font-normal mt-1">{reveal.calibration_correct ? <>You aligned with <span className="italic" style={{ color: "var(--ac)" }}>the builder.</span></> : <>A different <span className="italic" style={{ color: "var(--gold)" }}>perspective.</span></>}</h2>
+    </div>
 
     <div className="flex rounded-[8px] overflow-hidden mt-5 fade-up-2" style={{ border: "1px solid var(--border)" }}>
       <div className="w-[3px] flex-shrink-0" style={{ background: "var(--ac)" }} />
@@ -51,7 +66,7 @@ export default function ReflectionsPage() {
   </div></Shell>;
 
   return <Shell><div className="flex-1 p-6 max-w-[640px]">
-    <p className="font-mono text-[8px] tracking-[1px] fade-up" style={{ color: "var(--t5)" }}>REFLECTION · {scenario?.decision_category?.toUpperCase()}</p>
+    <p className="font-mono text-[8px] tracking-[1px] fade-up" style={{ color: "var(--t5)" }}>REFLECTION · {scenario?.decision_category?.toUpperCase()} · {totalSc + 1} OF 18 · {totalSc + 1} OF 18</p>
     <h2 className="font-display text-[20px] font-normal mt-2 leading-snug fade-up-1">A {scenario?.decision_category} decision <span className="italic" style={{ color: "var(--ac)" }}>worth examining.</span></h2>
     <p className="text-[12px] mt-4 leading-relaxed fade-up-2" style={{ color: "var(--t3)" }}>{scenario?.situation}</p>
     <p className="text-[9px] mt-1.5 fade-up-2" style={{ color: "var(--t5)" }}>{scenario?.guest} · Lenny's Podcast</p>

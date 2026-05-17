@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Shell from "@/components/Shell";
+import VoiceRecorder from "@/components/VoiceRecorder";
 
 const MSGS = ["Reflecting on 300 conversations...", "Noticing patterns...", "Perspectives forming..."];
 const SEV_COLORS = [
@@ -34,13 +35,23 @@ export default function SagePage() {
         <div className="mt-5">
           {loading ? (
             <div className="text-center py-12 fade-up">
-              <span className="w-7 h-7 rounded-full border inline-flex items-center justify-center text-[10px] font-medium" style={{ borderColor: "var(--ac)", color: "var(--ac)" }}>S</span>
-              <p className="font-display italic mt-4 text-[14px]" style={{ color: "var(--ac)", animation: "pulse 2.5s ease-in-out infinite" }}>{MSGS[lm]}</p>
+              <div className="relative inline-flex items-center justify-center">
+                <svg width="64" height="64" viewBox="0 0 64 64" className="animate-spin" style={{ animationDuration: "8s" }}>
+                  <circle cx="32" cy="32" r="28" fill="none" stroke="var(--border)" strokeWidth="1" />
+                  <circle cx="32" cy="32" r="28" fill="none" stroke="var(--ac)" strokeWidth="1.5" strokeDasharray="40 136" strokeLinecap="round" />
+                </svg>
+                <span className="absolute w-8 h-8 rounded-full border flex items-center justify-center text-[12px] font-medium" style={{ borderColor: "var(--ac)", color: "var(--ac)" }}>S</span>
+              </div>
+              <p className="font-display italic mt-5 text-[14px]" style={{ color: "var(--ac)", animation: "pulse 2.5s ease-in-out infinite" }}>{MSGS[lm]}</p>
+              <p className="text-[9px] mt-2" style={{ color: "var(--t5)" }}>Searching 3,839 conversations...</p>
             </div>
           ) : (
             <div className="fade-up-2">
-              <textarea value={inp} onChange={e => setInp(e.target.value)} placeholder="Paste meeting notes, describe a decision, share what's weighing on you..."
-                className="w-full h-[140px] px-4 py-3.5 rounded-[10px] text-[13px] outline-none resize-none leading-relaxed" style={{ background: "var(--bg2)", border: "1px solid var(--border)", color: "var(--t1)" }} />
+              <div className="relative">
+                <textarea value={inp} onChange={e => setInp(e.target.value)} placeholder="Paste meeting notes, describe a decision, share what's weighing on you..."
+                  className="w-full h-[140px] px-4 py-3.5 rounded-[10px] text-[13px] outline-none resize-none leading-relaxed pr-12" style={{ background: "var(--bg2)", border: "1px solid var(--border)", color: "var(--t1)" }} />
+                <div className="absolute top-3 right-3"><VoiceRecorder onTranscript={t => setInp(prev => prev + t)} /></div>
+              </div>
               {error && <p className="text-red-400 text-xs mt-2">{error}</p>}
               <button onClick={run} disabled={inp.length < 20} className="w-full py-3 mt-2.5 rounded-lg text-[13px] font-medium cursor-pointer transition-all"
                 style={{ background: inp.length < 20 ? "var(--bg3)" : "var(--ac)", color: inp.length < 20 ? "var(--t5)" : "var(--bg)" }}>Reflect →</button>
