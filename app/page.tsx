@@ -34,9 +34,7 @@ export default function LandingPage() {
           <span className="w-5 h-5 rounded-full border flex items-center justify-center text-[9px] font-medium" style={{ borderColor: "var(--ac)", color: "var(--ac)" }}>S</span>
           <span className="font-display text-[16px] font-medium">Sage</span>
         </div>
-        <div className="hidden md:flex gap-8">
-          {["Product","Reflections","About","Pricing"].map(l => <span key={l} className="text-[13px] cursor-pointer" style={{ color: "var(--t4)" }}>{l}</span>)}
-        </div>
+        
         <button onClick={triggerAuth} className="px-5 py-2 rounded-lg text-[13px] font-medium cursor-pointer" style={{ color: "var(--t1)", border: "1px solid var(--border2)" }}>Sign in</button>
       </div>
 
