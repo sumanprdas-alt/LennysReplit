@@ -15,6 +15,31 @@ const SEV = [
   { border: "var(--green)", label: "INVESTIGATE", color: "var(--green)", bg: "rgba(90,122,58,.04)" },
 ];
 
+
+function gradeInput(text: string): { level: string; color: string; message: string; ready: boolean } {
+  const words = text.trim().split(/\s+/).filter(w => w.length > 0);
+  const wordCount = words.length;
+  
+  // Gibberish check: too many repeated words
+  const uniqueWords = new Set(words.map(w => w.toLowerCase()));
+  const uniqueRatio = uniqueWords.size / Math.max(wordCount, 1);
+  if (wordCount > 10 && uniqueRatio < 0.3) return { level: "🔴", color: "var(--red)", message: "This looks like repeated text — try describing your actual situation.", ready: false };
+  
+  // Too short
+  if (wordCount < 20) return { level: "", color: "var(--t5)", message: "", ready: false };
+  if (wordCount < 50) return { level: "🔴", color: "var(--red)", message: `${50 - wordCount} more words needed — what's the situation and what's weighing on you?`, ready: false };
+  
+  // Check for specificity signals
+  const hasNumbers = /\d/.test(text);
+  const hasDecision = /(should|whether|debating|deciding|considering|thinking about|help me|how do|what if|trade-?off|vs|or )/i.test(text);
+  const hasDomain = /(product|team|customer|user|revenue|churn|growth|market|pricing|hire|fund|feature|launch|pivot|retention|onboard)/i.test(text);
+  const signals = [hasNumbers, hasDecision, hasDomain].filter(Boolean).length;
+  
+  if (signals >= 2) return { level: "🟢", color: "var(--ac)", message: "Strong context — the Sage can work with this.", ready: true };
+  if (signals === 1) return { level: "🟡", color: "var(--gold)", message: "Good start — try adding numbers or a specific question.", ready: true };
+  return { level: "🟡", color: "var(--gold)", message: "Add more specifics: numbers, team size, what decision you're facing.", ready: true };
+}
+
 export default function SagePage() {
   const [inp, setInp] = useState("");
   const [loading, setLoading] = useState(false);
@@ -27,7 +52,7 @@ export default function SagePage() {
   const [followUpLoading, setFollowUpLoading] = useState(false);
 
   const run = async () => {
-    if (inp.trim().length < 20) { setError("Please provide more detail."); return; }
+    const grade = gradeInput(inp); if (!grade.ready) { setError("Please provide more context — at least 50 words."); return; }
     setError(""); setLoading(true); setStep(0);
     const t0 = setTimeout(() => setStep(1), 800);
     const t1 = setTimeout(() => setStep(2), 2500);
@@ -87,9 +112,15 @@ export default function SagePage() {
                 className="w-full h-[150px] px-4 py-4 rounded-xl text-[13px] outline-none resize-none leading-relaxed pr-12" style={{background:"var(--bg2)", border:"1px solid var(--border)", color:"var(--t1)"}} />
               <div className="absolute top-3 right-3"><VoiceRecorder onTranscript={t => setInp(prev => prev + t)} /></div>
             </div>
-            {error && <p className="text-red-400 text-xs mt-2">{error}</p>}
-            <button onClick={run} disabled={inp.length < 20} className="w-full py-3 mt-3 rounded-xl text-[13px] font-medium cursor-pointer transition-all"
-              style={{background: inp.length < 20 ? "var(--bg3)" : "var(--ac)", color: inp.length < 20 ? "var(--t5)" : "var(--bg)"}}>Reflect →</button>
+            {(() => { const g = gradeInput(inp); return g.message ? (
+                <div className="flex items-center gap-2 mt-2 px-1">
+                  <span className="text-[12px]">{g.level}</span>
+                  <p className="text-[11px]" style={{color: g.color}}>{g.message}</p>
+                </div>
+              ) : null; })()}
+              {error && <p className="text-red-400 text-xs mt-1">{error}</p>}
+            <button onClick={run} disabled={!gradeInput(inp).ready} className="w-full py-3 mt-3 rounded-xl text-[13px] font-medium cursor-pointer transition-all"
+              style={{background: !gradeInput(inp).ready ? "var(--bg3)" : "var(--ac)", color: !gradeInput(inp).ready ? "var(--t5)" : "var(--bg)"}}>Reflect →</button>
           </div>
         )}
       </div>
