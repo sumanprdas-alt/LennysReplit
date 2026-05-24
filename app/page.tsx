@@ -27,7 +27,7 @@ export default function LandingPage() {
 
       {/* Nav — logo only */}
       <div className="flex items-center px-10 py-4 relative z-10 fade-up">
-        <span className="w-5 h-5 rounded-full border flex items-center justify-center text-[9px] font-medium" style={{ borderColor: "var(--ac)", color: "var(--ac)" }}>S</span>
+        <span className="w-5 h-5 rounded-full border flex items-center justify-center text-[11px] font-medium" style={{ borderColor: "var(--ac)", color: "var(--ac)" }}>S</span>
         <span className="font-display text-[16px] font-medium ml-2">Sage</span>
       </div>
 
@@ -54,7 +54,7 @@ export default function LandingPage() {
           <div className="w-full max-w-[380px] mx-4 rounded-xl p-8" style={{ background: "var(--bg2)", border: "1px solid var(--border2)" }}>
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full border flex items-center justify-center text-[9px] font-medium" style={{ borderColor: "var(--ac)", color: "var(--ac)" }}>S</span>
+                <span className="w-5 h-5 rounded-full border flex items-center justify-center text-[11px] font-medium" style={{ borderColor: "var(--ac)", color: "var(--ac)" }}>S</span>
                 <span className="font-display text-[16px] font-medium">Sage</span>
               </div>
               <button onClick={() => setShowAuth(false)} className="text-lg cursor-pointer" style={{ color: "var(--t4)", background: "none", border: "none" }}>✕</button>

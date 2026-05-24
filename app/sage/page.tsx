@@ -92,7 +92,7 @@ export default function SagePage() {
   return <Shell><div className="flex-1 p-6 max-w-[660px]">
     {!results ? (
       <div>
-        <p className="font-mono text-[8px] tracking-[1px] fade-up" style={{color:"var(--t5)"}}>THE SAGE</p>
+        <p className="font-mono text-[11px] tracking-[1px] fade-up" style={{color:"var(--t5)"}}>THE SAGE</p>
         <h2 className="font-display text-[22px] font-normal mt-2 fade-up-1">What's on <span className="italic" style={{color:"var(--ac)"}}>your mind?</span></h2>
 
         {loading ? (
@@ -109,7 +109,7 @@ export default function SagePage() {
                   <span className="text-[16px]">{s.icon}</span>
                   <div className="flex-1">
                     <p className="text-[12px] font-medium" style={{color: i <= step ? "var(--t1)" : "var(--t5)"}}>{s.text}</p>
-                    <p className="text-[9px]" style={{color:"var(--t5)"}}>{s.sub}</p>
+                    <p className="text-[12px]" style={{color:"var(--t5)"}}>{s.sub}</p>
                   </div>
                   {i < step && <span className="text-[11px]" style={{color:"var(--ac)"}}>✓</span>}
                   {i === step && <span className="w-3 h-3 rounded-full border-2 animate-spin" style={{borderColor:"var(--border)", borderTopColor:"var(--ac)"}} />}
@@ -128,7 +128,7 @@ export default function SagePage() {
                 <div className="flex items-center gap-2 mt-2 px-1">
                   <span className="text-[12px]">{g.level || "✏️"}</span>
                   <p className="text-[11px] flex-1" style={{color: g.color}}>{g.message || "Start describing your situation..."}</p>
-                  <span className="font-mono text-[9px]" style={{color: g.wordCount >= 50 ? "var(--ac)" : g.wordCount >= 30 ? "var(--gold)" : "var(--t5)"}}>{g.wordCount} words</span>
+                  <span className="font-mono text-[11px]" style={{color: g.wordCount >= 50 ? "var(--ac)" : g.wordCount >= 30 ? "var(--gold)" : "var(--t5)"}}>{g.wordCount} words</span>
                 </div>
               ) : null; })()}
               {error && <p className="text-red-400 text-xs mt-1">{error}</p>}
@@ -148,9 +148,9 @@ export default function SagePage() {
             <text x="24" y="31" textAnchor="middle" fill="var(--t5)" fontSize="6">found</text>
           </svg>
           <div>
-            <p className="font-mono text-[7px] tracking-[1px]" style={{color:"var(--t5)"}}>DIAGNOSTIC REPORT</p>
+            <p className="font-mono text-[11px] tracking-[1px]" style={{color:"var(--t5)"}}>DIAGNOSTIC REPORT</p>
             <p className="font-display text-[18px] font-normal mt-0.5">{results.blind_spots?.length || 0} patterns <span className="italic" style={{color:"var(--ac)"}}>the Sage noticed.</span></p>
-            <p className="text-[9px] mt-0.5" style={{color:"var(--t5)"}}>12 segments matched · {new Set(results.blind_spots?.map((b: any) => b.guest)).size || 0} guests cited</p>
+            <p className="text-[12px] mt-0.5" style={{color:"var(--t5)"}}>12 segments matched · {new Set(results.blind_spots?.map((b: any) => b.guest)).size || 0} guests cited</p>
           </div>
         </div>
 
@@ -160,7 +160,7 @@ export default function SagePage() {
           <div style={{flex: Math.max(0, 3 - (results.blind_spots?.length || 0)), background:"var(--border)"}} />
         </div>
         <div className="flex mb-5 fade-up-1">
-          {results.blind_spots?.map((_: any, i: number) => <div key={i} className="text-[7px]" style={{flex:1, color: SEV[i % 3].color}}>{SEV[i % 3].label.toLowerCase()}</div>)}
+          {results.blind_spots?.map((_: any, i: number) => <div key={i} className="text-[10px]" style={{flex:1, color: SEV[i % 3].color}}>{SEV[i % 3].label.toLowerCase()}</div>)}
         </div>
 
         {/* Findings with expandable sources */}
@@ -173,9 +173,9 @@ export default function SagePage() {
                 <div className="w-[3px] flex-shrink-0" style={{background: sev.border}} />
                 <div className="flex-1 p-4">
                   <div className="flex items-center gap-1.5 mb-1.5">
-                    <span className="font-mono text-[7px] font-medium tracking-[.5px]" style={{color: sev.color}}>{sev.label}</span>
-                    <span className="text-[7px]" style={{color:"var(--border2)"}}>—</span>
-                    <span className="text-[7px]" style={{color:"var(--t5)"}}>{bs.episode || bs.decision_category}</span>
+                    <span className="font-mono text-[11px] font-medium tracking-[.5px]" style={{color: sev.color}}>{sev.label}</span>
+                    <span className="text-[10px]" style={{color:"var(--border2)"}}>—</span>
+                    <span className="text-[10px]" style={{color:"var(--t5)"}}>{bs.episode || bs.decision_category}</span>
                   </div>
                   <p className="text-[13px] font-medium leading-snug mb-2">{bs.title}</p>
                   <p className="text-[11px] leading-relaxed mb-3" style={{color:"var(--t3)"}}>{bs.explanation}</p>
@@ -185,7 +185,7 @@ export default function SagePage() {
                       <div className="w-5 h-5 rounded-full flex items-center justify-center text-[8px] font-medium" style={{background:"var(--bg3)", border:"1px solid var(--border)", color:"var(--t4)"}}>{bs.guest?.[0]}</div>
                       <span className="text-[10px]" style={{color:"var(--t4)"}}>{bs.guest} · Lenny's Podcast</span>
                     </div>
-                    <button onClick={() => setExpanded(isExpanded ? null : i)} className="text-[9px] font-medium cursor-pointer" style={{color: sev.color, background:"none", border:"none"}}>
+                    <button onClick={() => setExpanded(isExpanded ? null : i)} className="text-[12px] font-medium cursor-pointer" style={{color: sev.color, background:"none", border:"none"}}>
                       {isExpanded ? "Hide source ↑" : "View source ↓"}
                     </button>
                   </div>
@@ -195,9 +195,9 @@ export default function SagePage() {
               {isExpanded && (
                 <div className="px-4 pb-4 pt-0">
                   <div className="rounded-lg p-3 mt-2" style={{background:"var(--bg)", border:"1px solid var(--border)"}}>
-                    <p className="font-mono text-[7px] tracking-[.5px] mb-2" style={{color:"var(--t5)"}}>SOURCE TRANSCRIPT</p>
+                    <p className="font-mono text-[11px] tracking-[.5px] mb-2" style={{color:"var(--t5)"}}>SOURCE TRANSCRIPT</p>
                     <p className="text-[10px] italic leading-relaxed" style={{color:"var(--t3)"}}>"{bs.guest_insight || bs.explanation}"</p>
-                    <p className="text-[8px] mt-2" style={{color:"var(--t5)"}}>— {bs.guest}, {bs.episode || "Lenny's Podcast"}</p>
+                    <p className="text-[12px] mt-2" style={{color:"var(--t5)"}}>— {bs.guest}, {bs.episode || "Lenny's Podcast"}</p>
                   </div>
                 </div>
               )}
@@ -208,14 +208,14 @@ export default function SagePage() {
         {/* Diagnosis */}
         {results.tendency_detected && (
           <div className="rounded-xl p-4 mt-3 fade-up-3" style={{background:"var(--ac-bg)", border:"1px solid var(--ac-border)"}}>
-            <p className="font-mono text-[7px] tracking-[1px] mb-1.5" style={{color:"var(--ac)"}}>DIAGNOSIS</p>
+            <p className="font-mono text-[11px] tracking-[1px] mb-1.5" style={{color:"var(--ac)"}}>DIAGNOSIS</p>
             <p className="font-display text-[12px] italic leading-relaxed" style={{color:"var(--t2)"}}>{results.tendency_detected}</p>
           </div>
         )}
 
         {/* Follow-up conversation */}
         <div className="mt-5 rounded-xl p-4 fade-up-4" style={{background:"var(--bg2)", border:"1px solid var(--border)"}}>
-          <p className="font-mono text-[7px] tracking-[1px] mb-2" style={{color:"var(--ac)"}}>GO DEEPER</p>
+          <p className="font-mono text-[11px] tracking-[1px] mb-2" style={{color:"var(--ac)"}}>GO DEEPER</p>
           <p className="text-[12px] mb-3" style={{color:"var(--t3)"}}>Which pattern surprised you? The Sage can dig deeper.</p>
           {followUpResult ? (
             <div className="rounded-lg p-3 mb-3" style={{background:"var(--bg)", border:"1px solid var(--border)"}}>

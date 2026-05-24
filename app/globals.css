@@ -5,8 +5,8 @@
 
 :root {
   --bg: #111110; --bg2: #1A1A18; --bg3: #222220; --bg4: #2A2A27;
-  --border: #252523; --border2: #333330;
-  --t1: #FAFAF7; --t2: #DDDDD5; --t3: #888; --t4: #555; --t5: #333;
+  --border: #2E2E2B; --border2: #3A3A36;
+  --t1: #FAFAF7; --t2: #DDDDD5; --t3: #888; --t4: #777; --t5: #555;
   --ac: #B8D45A; --ac-dark: #8B9A6B; --ac-bg: rgba(184,212,90,0.06); --ac-border: rgba(184,212,90,0.15);
   --gold: #C4A56A; --red: #E24B4A; --green: #5A7A3A;
   --font-display: 'Fraunces','Source Serif 4',Georgia,serif;
