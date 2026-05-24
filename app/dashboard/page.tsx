@@ -67,7 +67,7 @@ export default function DashboardPage() {
             <span className="text-2xl">🧭</span>
           </div>
           <h2 className="font-display text-[18px] font-normal mb-2">Your strategic advisor is ready.</h2>
-          <p className="text-[12px] leading-relaxed max-w-[360px] mx-auto mb-5" style={{color:"var(--t3)"}}>Start with a daily reflection to sharpen your judgment, or bring a real challenge to the Sage.</p>
+          <p className="text-[13px] leading-relaxed max-w-[360px] mx-auto mb-5" style={{color:"var(--t3)"}}>Start with a daily reflection to sharpen your judgment, or bring a real challenge to the Sage.</p>
           <div className="flex gap-3 justify-center">
             <button onClick={() => router.push("/reflections")} id="reflect-card" className="px-5 py-2.5 rounded-lg text-[12px] font-medium cursor-pointer" style={{background:"var(--ac)", color:"var(--bg)"}}>Try a reflection →</button>
             <button onClick={() => router.push("/sage")} id="consult-card" className="px-5 py-2.5 rounded-lg text-[12px] font-medium cursor-pointer" style={{border:"1px solid var(--border2)", color:"var(--t3)"}}>Ask the Sage</button>
@@ -80,46 +80,46 @@ export default function DashboardPage() {
         <div className="flex gap-3 mt-5 fade-up-2">
           <div onClick={() => router.push("/reflections")} id="reflect-card" className="flex-1 rounded-xl p-4 cursor-pointer relative overflow-hidden transition-all hover:border-[var(--border2)]" style={{background:"var(--bg2)", border:"1px solid var(--border)", borderLeft:"3px solid var(--ac)"}}>
             <div className="absolute top-0 right-0 w-16 h-16 pointer-events-none" style={{background:"radial-gradient(circle at 100% 0%, rgba(184,212,90,.1), transparent 70%)"}} />
-            <p className="font-mono text-[11px] tracking-[1.2px] mb-2" style={{color:"var(--ac)"}}>REFLECT</p>
+            <p className="font-mono text-[12px] tracking-[1.2px] mb-2" style={{color:"var(--ac)"}}>REFLECT</p>
             <p className="text-[13px] font-medium leading-snug mb-1">{scenario && !scenario.error ? scenario.situation?.slice(0, 80) + "..." : "A new reflection awaits."}</p>
-            <p className="text-[12px] mb-3" style={{color:"var(--t4)"}}>{scenario?.guest || "Lenny's Podcast"} · {scenario?.decision_category || "Strategy"}</p>
+            <p className="text-[13px] mb-3" style={{color:"var(--t4)"}}>{scenario?.guest || "Lenny's Podcast"} · {scenario?.decision_category || "Strategy"}</p>
             <div className="h-[3px] rounded-full mb-2" style={{background:"var(--border)"}}>
               <div className="h-full rounded-full transition-all duration-1000" style={{width:`${Math.max(5,(totalSc/18)*100)}%`, background:"var(--ac)"}} />
             </div>
-            <p className="text-[12px]" style={{color:"var(--t4)"}}>{totalSc} of 18 completed</p>
+            <p className="text-[13px]" style={{color:"var(--t4)"}}>{totalSc} of 18 completed</p>
           </div>
           <div onClick={() => router.push("/sage")} id="consult-card" className="flex-1 rounded-xl p-4 cursor-pointer relative overflow-hidden transition-all hover:border-[var(--border2)]" style={{background:"var(--bg2)", border:"1px solid var(--border)", borderLeft:"3px solid var(--gold)"}}>
             <div className="absolute top-0 right-0 w-16 h-16 pointer-events-none" style={{background:"radial-gradient(circle at 100% 0%, rgba(196,165,106,.1), transparent 70%)"}} />
-            <p className="font-mono text-[11px] tracking-[1.2px] mb-2" style={{color:"var(--gold)"}}>CONSULT</p>
+            <p className="font-mono text-[12px] tracking-[1.2px] mb-2" style={{color:"var(--gold)"}}>CONSULT</p>
             <p className="text-[13px] font-medium leading-snug mb-1">Bring a real decision. Get patterns you're missing.</p>
-            <p className="text-[12px] mb-3" style={{color:"var(--t4)"}}>Drawing from 3,839 conversations</p>
+            <p className="text-[13px] mb-3" style={{color:"var(--t4)"}}>Drawing from 3,839 conversations</p>
             <div className="flex gap-1 mb-1">
               <span className="w-1.5 h-1.5 rounded-full" style={{background:"var(--ac)"}} /><span className="w-1.5 h-1.5 rounded-full" style={{background:"var(--gold)"}} /><span className="w-1.5 h-1.5 rounded-full" style={{background:"var(--red)"}} />
             </div>
-            <p className="text-[12px]" style={{color:"var(--t4)"}}>{totalSg} session{totalSg !== 1 ? "s" : ""} completed</p>
+            <p className="text-[13px]" style={{color:"var(--t4)"}}>{totalSg} session{totalSg !== 1 ? "s" : ""} completed</p>
           </div>
         </div>
 
         {/* Recent activity */}
         {(profile?.recent_scenarios?.length > 0 || profile?.recent_sage_sessions?.length > 0) && (
           <div className="mt-4 fade-up-3">
-            <p className="font-mono text-[11px] tracking-[1.2px] mb-2" style={{color:"var(--t5)"}}>RECENT ACTIVITY</p>
+            <p className="font-mono text-[12px] tracking-[1.2px] mb-2" style={{color:"var(--t5)"}}>RECENT ACTIVITY</p>
             {profile?.recent_sage_sessions?.slice(0, 2).map((s: any, i: number) => (
               <div key={`sg-${i}`} className="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1.5 cursor-pointer transition-all hover:border-[var(--border2)]" onClick={() => router.push("/sage")} style={{background:"var(--bg2)", border:"1px solid var(--border)"}}>
                 <span className="w-5 h-5 rounded flex items-center justify-center text-[9px]" style={{background:"var(--ac-bg)", color:"var(--ac)"}}>🧭</span>
                 <div className="flex-1 min-w-0">
-                  <p className="text-[10px] font-medium truncate">Sage: {s.decision_category || "Strategy"}</p>
-                  <p className="text-[12px] truncate" style={{color:"var(--t5)"}}>{(() => { try { const a = typeof s.sage_analysis === "string" ? JSON.parse(s.sage_analysis) : s.sage_analysis; return `${a.blind_spots?.length || 0} patterns found`; } catch { return "Completed"; } })()}</p>
+                  <p className="text-[12px] font-medium truncate">Sage: {s.decision_category || "Strategy"}</p>
+                  <p className="text-[13px] truncate" style={{color:"var(--t5)"}}>{(() => { try { const a = typeof s.sage_analysis === "string" ? JSON.parse(s.sage_analysis) : s.sage_analysis; return `${a.blind_spots?.length || 0} patterns found`; } catch { return "Completed"; } })()}</p>
                 </div>
-                <span className="text-[12px] flex-shrink-0" style={{color:"var(--t5)"}}>{new Date(s.created_at).toLocaleDateString()}</span>
+                <span className="text-[13px] flex-shrink-0" style={{color:"var(--t5)"}}>{new Date(s.created_at).toLocaleDateString()}</span>
               </div>
             ))}
             {profile?.recent_scenarios?.slice(0, 2).map((s: any, i: number) => (
               <div key={`sc-${i}`} className="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1.5 cursor-pointer" onClick={() => router.push("/reflections")} style={{background:"var(--bg2)", border:"1px solid var(--border)"}}>
                 <span className="w-5 h-5 rounded flex items-center justify-center text-[9px]" style={{background: s.calibration_correct ? "rgba(90,122,58,.15)" : "rgba(226,75,74,.1)", color: s.calibration_correct ? "var(--green)" : "var(--red)"}}>{s.calibration_correct ? "✓" : "✗"}</span>
                 <div className="flex-1 min-w-0">
-                  <p className="text-[10px] font-medium truncate">{s.guest}: {s.decision_category}</p>
-                  <p className="text-[12px]" style={{color:"var(--t5)"}}>{s.calibration_correct ? "Aligned with the builder" : "Different perspective"}</p>
+                  <p className="text-[12px] font-medium truncate">{s.guest}: {s.decision_category}</p>
+                  <p className="text-[13px]" style={{color:"var(--t5)"}}>{s.calibration_correct ? "Aligned with the builder" : "Different perspective"}</p>
                 </div>
               </div>
             ))}
@@ -133,7 +133,7 @@ export default function DashboardPage() {
         <span title="Calibration measures how often your instinct matches what the builder actually did. Higher = sharper product judgment." className="w-4 h-4 rounded-full flex items-center justify-center text-[9px] cursor-help" style={{background:"var(--bg4)", color:"var(--t4)", border:"1px solid var(--border)"}}>i</span>
       </div>
           <div className="flex-1 h-1 rounded-full" style={{background:"var(--border)"}}><div className="h-full rounded-full transition-all duration-1000" style={{width:`${Math.max(3, cal)}%`, background:"linear-gradient(90deg, var(--ac), var(--ac-dark))"}} /></div>
-          <p className="text-[12px]" style={{color:"var(--t4)"}}>{totalSc + totalSg} sessions</p>
+          <p className="text-[13px]" style={{color:"var(--t4)"}}>{totalSc + totalSg} sessions</p>
         </div>
       </>
     )}
@@ -141,7 +141,7 @@ export default function DashboardPage() {
     {/* Daily wisdom */}
     <div className="mt-4 rounded-xl p-4 fade-up-4" style={{background:"var(--bg2)", border:"1px solid var(--border)"}}>
       <p className="font-display text-[14px] italic leading-snug" style={{color:"var(--t2)"}}>"{QTS[qi].t}"</p>
-      <p className="text-[12px] mt-2" style={{color:"var(--t4)"}}>— {QTS[qi].g} · Lenny's Podcast</p>
+      <p className="text-[13px] mt-2" style={{color:"var(--t4)"}}>— {QTS[qi].g} · Lenny's Podcast</p>
     </div>
   </div></Shell>;
 }

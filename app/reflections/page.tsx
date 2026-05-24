@@ -45,7 +45,7 @@ export default function ReflectionsPage() {
       <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-3" style={{background: reveal.calibration_correct ? "rgba(184,212,90,.1)" : "rgba(196,165,106,.1)", border: `1px solid ${reveal.calibration_correct ? "var(--ac-border)" : "rgba(196,165,106,.2)"}`}}>
         <span className="text-2xl">{reveal.calibration_correct ? "🎯" : "🔄"}</span>
       </div>
-      <p className="font-mono text-[11px] tracking-[1px]" style={{color:"var(--t5)"}}>REFLECTION RESULT · {totalSc + 1} OF 18</p>
+      <p className="font-mono text-[12px] tracking-[1px]" style={{color:"var(--t5)"}}>REFLECTION RESULT · {totalSc + 1} OF 18</p>
       <h2 className="font-display text-[22px] font-normal mt-1">{reveal.calibration_correct ? <>Same instinct as <span className="italic" style={{color:"var(--ac)"}}>the builder.</span></> : <>You saw it <span className="italic" style={{color:"var(--gold)"}}>differently.</span></>}</h2>
     </div>
 
@@ -54,15 +54,15 @@ export default function ReflectionsPage() {
       <div className="flex-1 p-4">
         <div className="flex items-center gap-2 mb-2">
           <div className="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-medium" style={{background:"var(--bg3)", color:"var(--t4)"}}>{reveal.guest?.[0] || "G"}</div>
-          <span className="text-[10px]" style={{color:"var(--t4)"}}>{reveal.guest} · {reveal.episode_title}</span>
+          <span className="text-[12px]" style={{color:"var(--t4)"}}>{reveal.guest} · {reveal.episode_title}</span>
         </div>
-        <p className="text-[12px] leading-relaxed">{reveal.what_happened}</p>
+        <p className="text-[13px] leading-relaxed">{reveal.what_happened}</p>
       </div>
     </div>
 
     {reveal.personal_insight && (
       <div className="rounded-xl p-4 mt-3 fade-up-2" style={{background:"var(--ac-bg)", border:"1px solid var(--ac-border)"}}>
-        <p className="font-mono text-[11px] tracking-[1px] mb-1.5" style={{color:"var(--ac)"}}>THE SAGE OBSERVES</p>
+        <p className="font-mono text-[12px] tracking-[1px] mb-1.5" style={{color:"var(--ac)"}}>THE SAGE OBSERVES</p>
         <p className="font-display text-[12px] italic leading-relaxed" style={{color:"var(--t2)"}}>{reveal.personal_insight}</p>
       </div>
     )}
@@ -72,7 +72,7 @@ export default function ReflectionsPage() {
       <div className="flex-1 h-1 rounded-full" style={{background:"var(--border)"}}>
         <div className="h-full rounded-full transition-all" style={{width:`${((totalSc+1)/18)*100}%`, background:"var(--ac)"}} />
       </div>
-      <p className="text-[12px]" style={{color:"var(--t4)"}}>{totalSc + 1}/18 reflections</p>
+      <p className="text-[13px]" style={{color:"var(--t4)"}}>{totalSc + 1}/18 reflections</p>
     </div>
 
     <div className="flex gap-2 mt-4 fade-up-4">
@@ -93,7 +93,7 @@ export default function ReflectionsPage() {
         <div className="flex-1 h-1 rounded-full w-32" style={{background:"var(--border)"}}>
           <div className="h-full rounded-full" style={{width:`${(totalSc/18)*100}%`, background:"var(--ac)"}} />
         </div>
-        <p className="text-[12px]" style={{color:"var(--t4)"}}>{totalSc}/18</p>
+        <p className="text-[13px]" style={{color:"var(--t4)"}}>{totalSc}/18</p>
       </div>
       <div className="flex gap-3 justify-center">
         <button onClick={() => router.push("/sage")} className="px-5 py-2.5 rounded-lg text-[12px] font-medium cursor-pointer" style={{background:"var(--ac)", color:"var(--bg)"}}>Consult the Sage →</button>
@@ -104,12 +104,12 @@ export default function ReflectionsPage() {
 
   // Scenario view
   return <Shell><div className="flex-1 p-6 max-w-[820px]">
-    <p className="font-mono text-[11px] tracking-[1px] fade-up" style={{color:"var(--t5)"}}>REFLECTION · {scenario?.decision_category?.toUpperCase()} · {totalSc + 1} OF 18</p>
+    <p className="font-mono text-[12px] tracking-[1px] fade-up" style={{color:"var(--t5)"}}>REFLECTION · {scenario?.decision_category?.toUpperCase()} · {totalSc + 1} OF 18</p>
     <h2 className="font-display text-[22px] font-normal mt-2 leading-snug fade-up-1">A real <span className="italic" style={{color:"var(--ac)"}}>{scenario?.decision_category}</span> decision.</h2>
     <p className="text-[13px] mt-4 leading-relaxed fade-up-2" style={{color:"var(--t3)"}}>{scenario?.situation}</p>
-    <p className="text-[10px] mt-2 fade-up-2" style={{color:"var(--t5)"}}>{scenario?.guest} · Lenny's Podcast</p>
+    <p className="text-[12px] mt-2 fade-up-2" style={{color:"var(--t5)"}}>{scenario?.guest} · Lenny's Podcast</p>
 
-    <p className="font-mono text-[11px] tracking-[1px] mt-6 mb-3 fade-up-3" style={{color:"var(--t5)"}}>YOUR CALL</p>
+    <p className="font-mono text-[12px] tracking-[1px] mt-6 mb-3 fade-up-3" style={{color:"var(--t5)"}}>YOUR CALL</p>
     <div className="flex flex-col gap-2 fade-up-3">
       {scenario?.options?.map((opt: any, i: number) => (
         <button key={opt.label} onClick={() => setSel(opt.label)}

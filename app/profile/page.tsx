@@ -86,7 +86,7 @@ export default function ProfilePage() {
                 <div className="absolute -left-[23px] top-[4px] w-3 h-3 rounded-full border-2" style={{background:"var(--ac)", borderColor:"var(--bg)"}} />
                 <p className="font-mono text-[10px]" style={{color:"var(--ac)"}}>{new Date(s.created_at).toLocaleDateString()}</p>
                 <p className="text-[14px] font-medium mt-1">Consulted the Sage: {s.decision_category}</p>
-                <p className="text-[12px] mt-1" style={{color:"var(--t4)"}}>
+                <p className="text-[13px] mt-1" style={{color:"var(--t4)"}}>
                   {(() => { try { const a = typeof s.sage_analysis === "string" ? JSON.parse(s.sage_analysis) : s.sage_analysis; return `${a.blind_spots?.length || 0} patterns found`; } catch { return "Completed"; } })()}
                 </p>
               </div>
@@ -96,7 +96,7 @@ export default function ProfilePage() {
                 <div className="absolute -left-[23px] top-[4px] w-3 h-3 rounded-full border-2" style={{background:"var(--t1)", borderColor:"var(--bg)"}} />
                 <p className="font-mono text-[10px]" style={{color:"var(--t3)"}}>{new Date(s.created_at).toLocaleDateString()}</p>
                 <p className="text-[14px] font-medium mt-1">Reflected: {s.decision_category || "Strategy"}</p>
-                <p className="text-[12px] mt-1" style={{color:"var(--t4)"}}>{s.guest} · {s.calibration_correct ? "Aligned" : "Diverged"}</p>
+                <p className="text-[13px] mt-1" style={{color:"var(--t4)"}}>{s.guest} · {s.calibration_correct ? "Aligned" : "Diverged"}</p>
               </div>
             ))}
             <div className="relative">

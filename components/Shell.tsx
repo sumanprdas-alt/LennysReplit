@@ -28,12 +28,12 @@ export default function Shell({ children }: { children: React.ReactNode }) {
       <div className="flex-1 flex flex-col" style={{ height: "100vh" }}>
         {/* Top bar — welcome + theme toggle */}
         <div className="flex items-center justify-between px-6 py-2.5 border-b flex-shrink-0" style={{ borderColor: "var(--border)" }}>
-          <p className="text-[12px]" style={{ color: "var(--t3)" }}>
+          <p className="text-[13px]" style={{ color: "var(--t3)" }}>
             {userName && <>Welcome, <span className="font-medium" style={{ color: "var(--t2)" }}>{userName}</span></>}
           </p>
           <button
             onClick={toggleTheme}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] cursor-pointer transition-all"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[13px] cursor-pointer transition-all"
             style={{ color: "var(--t3)", background: "var(--bg2)", border: "1px solid var(--border)" }}
           >
             <span>{theme === "dark" ? "☀️" : "🌙"}</span>
