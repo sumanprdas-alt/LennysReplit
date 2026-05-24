@@ -16,28 +16,40 @@ const SEV = [
 ];
 
 
-function gradeInput(text: string): { level: string; color: string; message: string; ready: boolean } {
-  const words = text.trim().split(/\s+/).filter(w => w.length > 0);
+function gradeInput(text: string): { level: string; color: string; message: string; ready: boolean; wordCount: number } {
+  const words = text.trim().split(/\s+/).filter(w => w.length > 1);
   const wordCount = words.length;
   
-  // Gibberish check: too many repeated words
+  if (wordCount === 0) return { level: "", color: "var(--t5)", message: "", ready: false, wordCount: 0 };
+  
+  // Gibberish check: repeated chars or no real words
   const uniqueWords = new Set(words.map(w => w.toLowerCase()));
   const uniqueRatio = uniqueWords.size / Math.max(wordCount, 1);
-  if (wordCount > 10 && uniqueRatio < 0.3) return { level: "🔴", color: "var(--red)", message: "This looks like repeated text — try describing your actual situation.", ready: false };
+  const hasRealWords = /(the|and|but|our|we|my|is|are|have|this|that|with|for|not|how|what|should|team|product|user|customer|growth|build)/i.test(text);
   
-  // Too short
-  if (wordCount < 20) return { level: "", color: "var(--t5)", message: "", ready: false };
-  if (wordCount < 50) return { level: "🔴", color: "var(--red)", message: `${50 - wordCount} more words needed — what's the situation and what's weighing on you?`, ready: false };
+  if (wordCount >= 5 && (uniqueRatio < 0.3 || !hasRealWords)) return { level: "🔴", color: "var(--red)", message: "The Sage needs real context — describe your situation in your own words.", ready: false, wordCount };
   
-  // Check for specificity signals
+  // Domain relevance check
+  const domainWords = /(product|team|customer|user|revenue|churn|growth|market|pricing|hire|fund|feature|launch|pivot|retention|onboard|strategy|decision|startup|founder|company|build|ship|metric|conversion|engagement|roadmap|competitor|fundrais|investor|scale|acquisition|activation|monetiz|positioning|segment|enterprise|saas|b2b|b2c|arpu|arr|mrr|nps|cac|ltv)/i;
+  const hasDomain = domainWords.test(text);
   const hasNumbers = /\d/.test(text);
-  const hasDecision = /(should|whether|debating|deciding|considering|thinking about|help me|how do|what if|trade-?off|vs|or )/i.test(text);
-  const hasDomain = /(product|team|customer|user|revenue|churn|growth|market|pricing|hire|fund|feature|launch|pivot|retention|onboard)/i.test(text);
+  const hasDecision = /(should|whether|debating|deciding|considering|thinking|help|how do|what if|trade-?off|vs|or |dilemma|struggling|challenge|problem|question|concern|worried|unsure)/i.test(text);
   const signals = [hasNumbers, hasDecision, hasDomain].filter(Boolean).length;
   
-  if (signals >= 2) return { level: "🟢", color: "var(--ac)", message: "Strong context — the Sage can work with this.", ready: true };
-  if (signals === 1) return { level: "🟡", color: "var(--gold)", message: "Good start — try adding numbers or a specific question.", ready: true };
-  return { level: "🟡", color: "var(--gold)", message: "Add more specifics: numbers, team size, what decision you're facing.", ready: true };
+  if (wordCount < 10) return { level: "🔴", color: "var(--red)", message: "Keep going — describe what you're building and what's challenging you.", ready: false, wordCount };
+  if (wordCount < 30) return { level: "🟠", color: "var(--gold)", message: `${30 - wordCount} more words — add context about your stage, team, or metrics.`, ready: false, wordCount };
+  
+  // 30+ words — minimum viable context
+  if (wordCount < 50) {
+    if (!hasDomain) return { level: "🟡", color: "var(--gold)", message: "Mention your product, team, or specific challenge for better results.", ready: true, wordCount };
+    if (signals >= 2) return { level: "🟢", color: "var(--ac)", message: "Good context. Add more specifics for an even deeper diagnosis.", ready: true, wordCount };
+    return { level: "🟡", color: "var(--gold)", message: "Almost there — try adding numbers (users, revenue, team size) for precision.", ready: true, wordCount };
+  }
+  
+  // 50+ words — excellent territory
+  if (!hasDomain) return { level: "🟡", color: "var(--gold)", message: "Lots of context, but mention your product domain for more relevant insights.", ready: true, wordCount };
+  if (signals >= 2) return { level: "🟢", color: "var(--ac)", message: "Excellent context — the Sage will give you a precise diagnosis.", ready: true, wordCount };
+  return { level: "🟢", color: "var(--ac)", message: "Strong context — the Sage can work with this.", ready: true, wordCount };
 }
 
 export default function SagePage() {
@@ -112,10 +124,11 @@ export default function SagePage() {
                 className="w-full h-[150px] px-4 py-4 rounded-xl text-[13px] outline-none resize-none leading-relaxed pr-12" style={{background:"var(--bg2)", border:"1px solid var(--border)", color:"var(--t1)"}} />
               <div className="absolute top-3 right-3"><VoiceRecorder onTranscript={t => setInp(prev => prev + t)} /></div>
             </div>
-            {(() => { const g = gradeInput(inp); return g.message ? (
+            {(() => { const g = gradeInput(inp); return inp.trim().length > 0 ? (
                 <div className="flex items-center gap-2 mt-2 px-1">
-                  <span className="text-[12px]">{g.level}</span>
-                  <p className="text-[11px]" style={{color: g.color}}>{g.message}</p>
+                  <span className="text-[12px]">{g.level || "✏️"}</span>
+                  <p className="text-[11px] flex-1" style={{color: g.color}}>{g.message || "Start describing your situation..."}</p>
+                  <span className="font-mono text-[9px]" style={{color: g.wordCount >= 50 ? "var(--ac)" : g.wordCount >= 30 ? "var(--gold)" : "var(--t5)"}}>{g.wordCount} words</span>
                 </div>
               ) : null; })()}
               {error && <p className="text-red-400 text-xs mt-1">{error}</p>}
