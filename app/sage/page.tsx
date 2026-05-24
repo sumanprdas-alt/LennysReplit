@@ -183,7 +183,7 @@ export default function SagePage() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <div className="w-5 h-5 rounded-full flex items-center justify-center text-[8px] font-medium" style={{background:"var(--bg3)", border:"1px solid var(--border)", color:"var(--t4)"}}>{bs.guest?.[0]}</div>
-                      <span className="text-[10px]" style={{color:"var(--t4)"}}>{bs.guest} · Lenny's Podcast</span>
+                      <span className="text-[10px]" style={{color:"var(--t4)"}}>{bs.guest}</span>
                     </div>
                     <button onClick={() => setExpanded(isExpanded ? null : i)} className="text-[12px] font-medium cursor-pointer" style={{color: sev.color, background:"none", border:"none"}}>
                       {isExpanded ? "Hide source ↑" : "View source ↓"}
@@ -210,6 +210,30 @@ export default function SagePage() {
           <div className="rounded-xl p-4 mt-3 fade-up-3" style={{background:"var(--ac-bg)", border:"1px solid var(--ac-border)"}}>
             <p className="font-mono text-[11px] tracking-[1px] mb-1.5" style={{color:"var(--ac)"}}>DIAGNOSIS</p>
             <p className="font-display text-[12px] italic leading-relaxed" style={{color:"var(--t2)"}}>{results.tendency_detected}</p>
+          </div>
+        )}
+
+        {/* Recommended gameplan */}
+        {results.blind_spots?.length > 0 && (
+          <div className="rounded-xl p-5 mt-3 fade-up-3" style={{background:"var(--bg2)", border:"1px solid var(--border)"}}>
+            <p className="font-mono text-[11px] tracking-[1px] mb-3" style={{color:"var(--gold)"}}>RECOMMENDED NEXT STEPS</p>
+            {(results.next_steps || results.blind_spots?.map((bs: any, i: number) => 
+              i === 0 ? `Investigate: ${bs.title?.split(",")[0]?.slice(0, 60)}` :
+              i === 1 ? `Validate with 3-5 customer conversations this week` :
+              `Define a tracking metric and review in 30 days`
+            ))?.map((step: string, i: number) => (
+              <div key={`gp-${i}`} className="flex gap-3 mb-3 last:mb-0">
+                <div className="w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-medium flex-shrink-0 mt-0.5" style={{background:"rgba(196,165,106,.1)", color:"var(--gold)"}}>{i + 1}</div>
+                <div>
+                  <p className="text-[13px] font-medium" style={{color:"var(--t1)"}}>{step}</p>
+                  <p className="text-[11px] mt-1" style={{color:"var(--t4)"}}>{
+                    i === 0 ? "This week — before making any other decisions." :
+                    i === 1 ? "Within 5 days — conversations reveal the truth." :
+                    "Set it now — review in 30 days."
+                  }</p>
+                </div>
+              </div>
+            ))}
           </div>
         )}
 

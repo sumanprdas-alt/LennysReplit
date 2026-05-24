@@ -75,7 +75,12 @@ Respond in this exact JSON format:
     }
   ],
   "tendency_detected": "One sentence about what this reveals about their decision-making",
-  "decision_category": "one of: growth, positioning, pricing, hiring, product, gtm, retention, fundraising"
+  "decision_category": "one of: growth, positioning, pricing, hiring, product, gtm, retention, fundraising",
+  "next_steps": [
+    "Specific action step 1 — what to do this week",
+    "Specific action step 2 — who to talk to or what to measure",
+    "Specific action step 3 — what to track over 30 days"
+  ]
 }`,
     `FOUNDER'S INPUT:\n${truncatedInput}\n\n${formattedChunks ? `RELEVANT WISDOM FROM LENNY'S ARCHIVE:\n${formattedChunks}` : "No specific segments retrieved."}`,
     1024
