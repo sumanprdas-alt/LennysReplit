@@ -5,7 +5,7 @@ import VoiceRecorder from "@/components/VoiceRecorder";
 
 const STEPS = [
   { icon: "🔍", text: "Understanding your context...", sub: "Mapping your situation" },
-  { icon: "📚", text: "Consulting 3,839 conversations...", sub: "Finding the builders who've been here" },
+  { icon: "📚", text: "Scanning the wisdom archive...", sub: "Matching your situation to real builder experiences" },
   { icon: "🎯", text: "Connecting the patterns...", sub: "Surfacing what others missed" },
   { icon: "🧠", text: "Forming the diagnosis...", sub: "The Sage is reflecting" },
 ];
