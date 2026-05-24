@@ -18,45 +18,28 @@ export default function LandingPage() {
     setLoading(false);
     if (result?.error) setError(result.error); else router.push("/onboarding");
   };
-  const triggerAuth = () => setShowAuth(true);
-  const prompts = ["How do great PMs prioritize?", "What makes a product truly sticky?", "How do founders build focus?"];
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden" style={{ background: "var(--bg)", color: "var(--t1)" }}>
-      {/* BG image + overlays */}
       <div className="absolute inset-0" style={{ backgroundImage: "url('/hero-bg.jpg')", backgroundSize: "110%", backgroundPosition: "center 60%", pointerEvents: "none" }} />
       <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(17,17,16,0.85) 0%, rgba(17,17,16,0.7) 40%, rgba(17,17,16,0.92) 100%)", pointerEvents: "none" }} />
       <div className="absolute inset-0 opacity-[.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")", pointerEvents: "none" }} />
 
-      {/* Nav */}
-      <div className="flex items-center justify-between px-10 py-4 relative z-10 fade-up">
-        <div className="flex items-center gap-2">
-          <span className="w-5 h-5 rounded-full border flex items-center justify-center text-[9px] font-medium" style={{ borderColor: "var(--ac)", color: "var(--ac)" }}>S</span>
-          <span className="font-display text-[16px] font-medium">Sage</span>
-        </div>
-        
-        <button onClick={triggerAuth} className="px-5 py-2 rounded-lg text-[13px] font-medium cursor-pointer" style={{ color: "var(--t1)", border: "1px solid var(--border2)" }}>Sign in</button>
+      {/* Nav — logo only */}
+      <div className="flex items-center px-10 py-4 relative z-10 fade-up">
+        <span className="w-5 h-5 rounded-full border flex items-center justify-center text-[9px] font-medium" style={{ borderColor: "var(--ac)", color: "var(--ac)" }}>S</span>
+        <span className="font-display text-[16px] font-medium ml-2">Sage</span>
       </div>
 
-      {/* Hero */}
+      {/* Hero — clean, no AI label */}
       <div className="flex-1 flex flex-col items-center justify-center relative z-10 px-6 text-center" style={{ paddingTop: "4vh" }}>
-        <p className="font-mono text-[11px] tracking-[2px] mb-6 fade-up" style={{ color: "var(--ac)" }}>AI STRATEGIC ADVISOR FOR BUILDERS</p>
         <h1 className="font-display text-[56px] md:text-[72px] font-normal leading-none tracking-tight fade-up-1" style={{ letterSpacing: "-2px", maxWidth: 700 }}>Strategic clarity<br/>for builders.</h1>
-        <p className="text-[16px] md:text-[18px] mt-7 leading-relaxed max-w-[500px] fade-up-2" style={{ color: "var(--t3)" }}>Search, synthesize, and learn from the world's best startup conversations.</p>
+        <p className="text-[16px] md:text-[18px] mt-7 leading-relaxed max-w-[480px] fade-up-2" style={{ color: "var(--t3)" }}>Search, synthesize, and learn from the world's best product leaders.</p>
 
-        {/* Search bar */}
-        <div className="w-full max-w-[600px] mt-10 fade-up-3">
-          <div onClick={triggerAuth} className="flex items-center rounded-2xl px-6 py-4 cursor-pointer transition-all" style={{ background: "rgba(26,26,24,0.85)", border: "1px solid var(--border2)", backdropFilter: "blur(12px)" }}>
-            <span className="flex-1 text-[15px] text-left" style={{ color: "var(--t4)" }}>Ask Sage anything...</span>
-            <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: "var(--ac)" }}>
-              <span className="text-[16px]" style={{ color: "var(--bg)" }}>↑</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Prompts */}
-        <div className="flex flex-wrap justify-center gap-5 mt-6 fade-up-4">
-          {prompts.map(p => <button key={p} onClick={triggerAuth} className="flex items-center gap-2 text-[13px] cursor-pointer" style={{ color: "var(--t4)", background: "none", border: "none" }}>{p} <span style={{ color: "var(--t5)" }}>→</span></button>)}
+        {/* Auth buttons */}
+        <div className="flex gap-3 mt-10 fade-up-3">
+          <button onClick={() => { setIsSignUp(true); setShowAuth(true); }} className="px-8 py-3 rounded-xl text-[14px] font-medium cursor-pointer" style={{ background: "var(--ac)", color: "var(--bg)" }}>Sign up →</button>
+          <button onClick={() => { setIsSignUp(false); setShowAuth(true); }} className="px-8 py-3 rounded-xl text-[14px] font-medium cursor-pointer" style={{ border: "1px solid var(--border2)", color: "var(--t2)" }}>Log in</button>
         </div>
       </div>
 

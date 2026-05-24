@@ -40,7 +40,7 @@ export default function Sidebar() {
                 {active && <span className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: "var(--ac)" }} />}
                 <span className="text-[11px]">{item.icon}</span>
                 <span>{item.label}</span>
-                {item.soon && <span className="ml-auto text-[6px] font-mono py-px px-1 rounded" style={{ color: "var(--t5)", background: "var(--bg3)" }}>SOON</span>}
+                {item.soon && <span className="ml-auto text-[6px] font-mono py-px px-1 rounded" style={{ color: "var(--t5)", background: "var(--bg3)" }}>WIP</span>}
               </Link>
             );
           })}

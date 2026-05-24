@@ -4,10 +4,10 @@ import Shell from "@/components/Shell";
 import VoiceRecorder from "@/components/VoiceRecorder";
 
 const STEPS = [
-  { icon: "🔍", text: "Embedding your input...", sub: "Converting to 384-dimensional vector" },
-  { icon: "📚", text: "Searching 3,839 conversations...", sub: "pgvector cosine similarity" },
-  { icon: "🎯", text: "Found relevant segments", sub: "Matching guests and insights" },
-  { icon: "🧠", text: "Analyzing patterns...", sub: "Claude is thinking" },
+  { icon: "🔍", text: "Understanding your context...", sub: "Mapping your situation" },
+  { icon: "📚", text: "Consulting 3,839 conversations...", sub: "Finding the builders who've been here" },
+  { icon: "🎯", text: "Connecting the patterns...", sub: "Surfacing what others missed" },
+  { icon: "🧠", text: "Forming the diagnosis...", sub: "The Sage is reflecting" },
 ];
 const SEV = [
   { border: "var(--red)", label: "CRITICAL", color: "var(--red)", bg: "rgba(226,75,74,.04)" },
