@@ -22,29 +22,32 @@ export async function callClaudeJSON(system: string, user: string, maxTokens: nu
 
   const text = response.content[0].type === "text" ? response.content[0].text : "";
   
-  try {
-    const clean = text.replace(/```json\s*/g, "").replace(/```\s*/g, "").trim();
-    return JSON.parse(clean);
-  } catch (e) {
-    // Fix truncated JSON
-    try {
-      let fixed = text.replace(/```json\s*/g, "").replace(/```\s*/g, "").trim();
-      fixed = fixed.replace(/,\s*$/, "");
-      // Fix incomplete string at end
-      const lastQuote = fixed.lastIndexOf('"');
-      const afterLast = fixed.slice(lastQuote + 1);
-      if (afterLast.match(/^[^"]*$/) && !afterLast.match(/[}\]]/)) {
-        fixed = fixed.slice(0, lastQuote + 1);
-      }
-      // Close open structures
-      const ob = (fixed.match(/{/g) || []).length - (fixed.match(/}/g) || []).length;
-      const oq = (fixed.match(/\[/g) || []).length - (fixed.match(/\]/g) || []).length;
-      fixed = fixed.replace(/,\s*$/, "");
-      for (let i = 0; i < oq; i++) fixed += "]";
-      for (let i = 0; i < ob; i++) fixed += "}";
-      return JSON.parse(fixed);
-    } catch {
-      throw new Error(`${(e as Error).message}`);
-    }
+  // Extract JSON object — find the first { and its matching }
+  const firstBrace = text.indexOf("{");
+  if (firstBrace === -1) throw new Error("No JSON found in response");
+  
+  let depth = 0;
+  let lastBrace = -1;
+  for (let i = firstBrace; i < text.length; i++) {
+    if (text[i] === "{") depth++;
+    if (text[i] === "}") { depth--; if (depth === 0) { lastBrace = i; break; } }
   }
+  
+  if (lastBrace === -1) {
+    // JSON was truncated — try to close it
+    let partial = text.slice(firstBrace);
+    partial = partial.replace(/,\s*$/, "");
+    // Close open strings
+    const quotes = (partial.match(/"/g) || []).length;
+    if (quotes % 2 !== 0) partial += '"';
+    // Close open structures
+    const ob = (partial.match(/{/g) || []).length - (partial.match(/}/g) || []).length;
+    const oq = (partial.match(/\[/g) || []).length - (partial.match(/\]/g) || []).length;
+    partial = partial.replace(/,\s*$/, "");
+    for (let i = 0; i < oq; i++) partial += "]";
+    for (let i = 0; i < ob; i++) partial += "}";
+    return JSON.parse(partial);
+  }
+  
+  return JSON.parse(text.slice(firstBrace, lastBrace + 1));
 }
