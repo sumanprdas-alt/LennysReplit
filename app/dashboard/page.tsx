@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Shell from "@/components/Shell";
+import Tour from "@/components/Tour";
 
 const QTS = [
   { t: "Most teams confuse movement with progress.", g: "Brian Chesky" },
@@ -16,6 +17,7 @@ export default function DashboardPage() {
   const [scenario, setScenario] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [qi, setQi] = useState(0);
+  const [showTour, setShowTour] = useState(false);
   const router = useRouter();
 
   useEffect(() => { const t = setInterval(() => setQi(p => (p+1)%QTS.length), 7000); return () => clearInterval(t); }, []);
@@ -27,6 +29,10 @@ export default function DashboardPage() {
       if (p?.user && !p.user.stage && !p.user.business_model) { router.push("/onboarding"); return; }
       setScenario(s); setProfile(p); setLoading(false);
     }).catch(() => setLoading(false));
+    // Show tour for first-time users
+    if (typeof window !== "undefined" && !localStorage.getItem("sage_tour_done")) {
+      setTimeout(() => setShowTour(true), 800);
+    }
   }, [router]);
 
   if (loading) return <Shell><div className="flex-1 flex items-center justify-center"><p style={{color:"var(--t4)"}}>Loading...</p></div></Shell>;
@@ -39,6 +45,7 @@ export default function DashboardPage() {
   const greeting = (() => { const h = new Date().getHours(); return h < 12 ? "Good morning" : h < 17 ? "Good afternoon" : "Good evening"; })();
 
   return <Shell><div className="flex-1 p-6 max-w-[640px]">
+    {showTour && <Tour onComplete={() => { setShowTour(false); localStorage.setItem("sage_tour_done", "1"); }} />}
     <div className="fade-up">
       <p className="text-[11px]" style={{color:"var(--t4)"}}>{greeting}, {userName}.</p>
       <h1 className="font-display text-[22px] font-normal mt-1">What shall we think through today?</h1>
@@ -46,7 +53,7 @@ export default function DashboardPage() {
 
     {/* Search */}
     <div className="mt-4 fade-up-1">
-      <div className="flex items-center rounded-xl px-5 py-3 cursor-pointer transition-all hover:border-[var(--border2)]" onClick={() => router.push("/sage")} style={{background:"var(--bg2)", border:"1px solid var(--border)"}}>
+      <div id="search-bar" className="flex items-center rounded-xl px-5 py-3 cursor-pointer transition-all hover:border-[var(--border2)]" onClick={() => router.push("/sage")} style={{background:"var(--bg2)", border:"1px solid var(--border)"}}>
         <span className="flex-1 text-[13px]" style={{color:"var(--t4)"}}>Ask Sage anything about strategy, product, or execution...</span>
         <span className="w-7 h-7 rounded-lg flex items-center justify-center text-[12px]" style={{background:"var(--ac)", color:"var(--bg)"}}>↑</span>
       </div>
@@ -71,7 +78,7 @@ export default function DashboardPage() {
       <>
         {/* RETURNING USER: Action cards */}
         <div className="flex gap-3 mt-5 fade-up-2">
-          <div onClick={() => router.push("/reflections")} className="flex-1 rounded-xl p-4 cursor-pointer relative overflow-hidden transition-all hover:border-[var(--border2)]" style={{background:"var(--bg2)", border:"1px solid var(--border)", borderLeft:"3px solid var(--ac)"}}>
+          <div onClick={() => router.push("/reflections")} id="reflect-card" className="flex-1 rounded-xl p-4 cursor-pointer relative overflow-hidden transition-all hover:border-[var(--border2)]" style={{background:"var(--bg2)", border:"1px solid var(--border)", borderLeft:"3px solid var(--ac)"}}>
             <div className="absolute top-0 right-0 w-16 h-16 pointer-events-none" style={{background:"radial-gradient(circle at 100% 0%, rgba(184,212,90,.1), transparent 70%)"}} />
             <p className="font-mono text-[11px] tracking-[1.2px] mb-2" style={{color:"var(--ac)"}}>REFLECT</p>
             <p className="text-[13px] font-medium leading-snug mb-1">{scenario && !scenario.error ? scenario.situation?.slice(0, 80) + "..." : "A new reflection awaits."}</p>
@@ -81,7 +88,7 @@ export default function DashboardPage() {
             </div>
             <p className="text-[12px]" style={{color:"var(--t4)"}}>{totalSc} of 18 completed</p>
           </div>
-          <div onClick={() => router.push("/sage")} className="flex-1 rounded-xl p-4 cursor-pointer relative overflow-hidden transition-all hover:border-[var(--border2)]" style={{background:"var(--bg2)", border:"1px solid var(--border)", borderLeft:"3px solid var(--gold)"}}>
+          <div onClick={() => router.push("/sage")} id="consult-card" className="flex-1 rounded-xl p-4 cursor-pointer relative overflow-hidden transition-all hover:border-[var(--border2)]" style={{background:"var(--bg2)", border:"1px solid var(--border)", borderLeft:"3px solid var(--gold)"}}>
             <div className="absolute top-0 right-0 w-16 h-16 pointer-events-none" style={{background:"radial-gradient(circle at 100% 0%, rgba(196,165,106,.1), transparent 70%)"}} />
             <p className="font-mono text-[11px] tracking-[1.2px] mb-2" style={{color:"var(--gold)"}}>CONSULT</p>
             <p className="text-[13px] font-medium leading-snug mb-1">Paste a challenge, get clarity from 300+ builders.</p>

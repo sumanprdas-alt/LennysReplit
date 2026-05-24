@@ -34,7 +34,7 @@ export default function Sidebar() {
           {section.items.map(item => {
             const active = pathname === item.href || pathname?.startsWith(item.href + "/");
             return (
-              <Link key={item.href} href={item.soon ? "#" : item.href}
+              <Link key={item.href} href={item.soon ? "#" : item.href} id={item.href === "/profile" ? "sidebar-profile" : undefined}
                 className="w-full flex items-center gap-[6px] px-3 py-[5px] text-[10px] transition-all"
                 style={{ color: active ? "var(--t1)" : item.soon ? "var(--t5)" : "var(--t4)", background: active ? "var(--bg2)" : "transparent" }}>
                 {active && <span className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: "var(--ac)" }} />}
