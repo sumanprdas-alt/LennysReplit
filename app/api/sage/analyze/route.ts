@@ -83,7 +83,7 @@ Respond in this exact JSON format:
   ]
 }`,
     `FOUNDER'S INPUT:\n${truncatedInput}\n\n${formattedChunks ? `RELEVANT WISDOM FROM LENNY'S ARCHIVE:\n${formattedChunks}` : "No specific segments retrieved."}`,
-    1024
+    2048
     );
   } catch (parseError: any) {
     console.error("Claude parse error:", parseError?.message || parseError);
