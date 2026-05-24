@@ -31,7 +31,7 @@ export default function DashboardPage() {
     }).catch(() => setLoading(false));
     // Show tour for first-time users
     if (typeof window !== "undefined" && !localStorage.getItem("sage_tour_done")) {
-      setTimeout(() => setShowTour(true), 800);
+      setTimeout(() => setShowTour(true), 1200);
     }
   }, [router]);
 
@@ -69,8 +69,8 @@ export default function DashboardPage() {
           <h2 className="font-display text-[18px] font-normal mb-2">Your strategic advisor is ready.</h2>
           <p className="text-[12px] leading-relaxed max-w-[360px] mx-auto mb-5" style={{color:"var(--t3)"}}>Start with a daily reflection to sharpen your judgment, or bring a real challenge to the Sage.</p>
           <div className="flex gap-3 justify-center">
-            <button onClick={() => router.push("/reflections")} className="px-5 py-2.5 rounded-lg text-[12px] font-medium cursor-pointer" style={{background:"var(--ac)", color:"var(--bg)"}}>Try a reflection →</button>
-            <button onClick={() => router.push("/sage")} className="px-5 py-2.5 rounded-lg text-[12px] font-medium cursor-pointer" style={{border:"1px solid var(--border2)", color:"var(--t3)"}}>Ask the Sage</button>
+            <button onClick={() => router.push("/reflections")} id="reflect-card" className="px-5 py-2.5 rounded-lg text-[12px] font-medium cursor-pointer" style={{background:"var(--ac)", color:"var(--bg)"}}>Try a reflection →</button>
+            <button onClick={() => router.push("/sage")} id="consult-card" className="px-5 py-2.5 rounded-lg text-[12px] font-medium cursor-pointer" style={{border:"1px solid var(--border2)", color:"var(--t3)"}}>Ask the Sage</button>
           </div>
         </div>
       </div>
