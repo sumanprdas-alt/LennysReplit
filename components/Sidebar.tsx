@@ -1,6 +1,5 @@
 "use client";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 
@@ -23,20 +22,7 @@ const NAV = [
 
 export default function Sidebar() {
   const pathname = usePathname();
-  const [theme, setTheme] = useState("dark");
-  
-  useEffect(() => {
-    const saved = localStorage.getItem("sage_theme") || "dark";
-    setTheme(saved);
-    document.documentElement.setAttribute("data-theme", saved);
-  }, []);
 
-  const toggleTheme = () => {
-    const next = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    localStorage.setItem("sage_theme", next);
-    document.documentElement.setAttribute("data-theme", next);
-  };
   return (
     <div className="w-[160px] border-r flex flex-col h-screen overflow-auto flex-shrink-0" style={{ borderColor: "var(--border)", background: "var(--bg)" }}>
       <div className="px-3 py-3.5 flex items-center gap-2">
@@ -62,10 +48,6 @@ export default function Sidebar() {
         </div>
       ))}
       <div className="mt-auto">
-        <button onClick={toggleTheme} className="w-full flex items-center gap-[6px] px-3 py-[5px] text-[10px] cursor-pointer" style={{ color: "var(--t4)", background: "none", border: "none" }}>
-          <span className="text-[11px]">{theme === "dark" ? "☀️" : "🌙"}</span>
-          <span>{theme === "dark" ? "Light mode" : "Dark mode"}</span>
-        </button>
         <button onClick={() => signOut({ callbackUrl: "/" })} className="w-full flex items-center gap-[6px] px-3 py-[5px] text-[10px] cursor-pointer" style={{ color: "var(--t5)", background: "none", border: "none" }}>
           <span className="text-[11px]">↩</span>
           <span>Sign out</span>
