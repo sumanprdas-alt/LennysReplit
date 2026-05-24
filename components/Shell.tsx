@@ -6,6 +6,7 @@ import Sidebar from "./Sidebar";
 export default function Shell({ children }: { children: React.ReactNode }) {
   const { data: session } = useSession();
   const [theme, setTheme] = useState("dark");
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem("sage_theme") || "dark";
@@ -24,23 +25,37 @@ export default function Shell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen flex" style={{ background: "var(--bg)", color: "var(--t1)" }}>
-      <Sidebar />
+      {/* Desktop sidebar */}
+      <div className="sidebar-desktop">
+        <Sidebar />
+      </div>
+
+      {/* Mobile sidebar overlay */}
+      {mobileMenu && (
+        <div className="sidebar-mobile-overlay fixed inset-0 z-50 flex">
+          <div className="w-[200px]" style={{ background: "var(--bg)" }}>
+            <Sidebar />
+          </div>
+          <div className="flex-1" style={{ background: "rgba(0,0,0,0.5)" }} onClick={() => setMobileMenu(false)} />
+        </div>
+      )}
+
       <div className="flex-1 flex flex-col" style={{ height: "100vh" }}>
-        {/* Top bar — welcome + theme toggle */}
-        <div className="flex items-center justify-between px-6 py-2.5 border-b flex-shrink-0" style={{ borderColor: "var(--border)" }}>
-          <p className="text-[13px]" style={{ color: "var(--t3)" }}>
-            {userName && <>Welcome, <span className="font-medium" style={{ color: "var(--t2)" }}>{userName}</span></>}
-          </p>
-          <button
-            onClick={toggleTheme}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[13px] cursor-pointer transition-all"
-            style={{ color: "var(--t3)", background: "var(--bg2)", border: "1px solid var(--border)" }}
-          >
+        {/* Top bar */}
+        <div className="flex items-center justify-between px-4 md:px-6 py-2.5 border-b flex-shrink-0" style={{ borderColor: "var(--border)" }}>
+          <div className="flex items-center gap-3">
+            {/* Mobile hamburger */}
+            <button onClick={() => setMobileMenu(true)} className="mobile-menu-btn cursor-pointer" style={{ color: "var(--t3)", background: "none", border: "none", fontSize: 18 }}>☰</button>
+            <p className="text-[13px]" style={{ color: "var(--t3)" }}>
+              {userName && <>Welcome, <span className="font-medium" style={{ color: "var(--t2)" }}>{userName}</span></>}
+            </p>
+          </div>
+          <button onClick={toggleTheme} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[13px] cursor-pointer" style={{ color: "var(--t3)", background: "var(--bg2)", border: "1px solid var(--border)" }}>
             <span>{theme === "dark" ? "☀️" : "🌙"}</span>
-            <span>{theme === "dark" ? "Light" : "Dark"}</span>
+            <span className="hidden md:inline">{theme === "dark" ? "Light" : "Dark"}</span>
           </button>
         </div>
-        {/* Page content */}
+        {/* Content */}
         <div className="flex-1 overflow-auto flex">
           {children}
         </div>

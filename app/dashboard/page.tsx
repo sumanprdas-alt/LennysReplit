@@ -30,7 +30,7 @@ export default function DashboardPage() {
       setScenario(s); setProfile(p); setLoading(false);
     }).catch(() => setLoading(false));
     // Show tour for first-time users
-    if (typeof window !== "undefined" && !localStorage.getItem("sage_tour_done")) {
+    if (typeof window !== "undefined" && !localStorage.getItem("sage_tour_done") && window.innerWidth > 768) {
       setTimeout(() => setShowTour(true), 1200);
     }
   }, [router]);
@@ -44,7 +44,7 @@ export default function DashboardPage() {
   const isNew = totalSc === 0 && totalSg === 0;
   const greeting = (() => { const h = new Date().getHours(); return h < 12 ? "Good morning" : h < 17 ? "Good afternoon" : "Good evening"; })();
 
-  return <Shell><div className="flex-1 p-6 max-w-[820px]">
+  return <Shell><div className="flex-1 p-6 max-w-[820px] mobile-full">
     {showTour && <Tour onComplete={() => { setShowTour(false); localStorage.setItem("sage_tour_done", "1"); }} />}
     <div className="fade-up">
       <p className="text-[11px]" style={{color:"var(--t4)"}}>{greeting}, {userName}.</p>

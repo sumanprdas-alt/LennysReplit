@@ -107,7 +107,7 @@ export default function SagePage() {
     finally { setFollowUpLoading(false); }
   };
 
-  return <Shell><div className="flex-1 p-6 max-w-[820px]">
+  return <Shell><div className="flex-1 p-6 max-w-[820px] mobile-full">
     {!results ? (
       <div>
         <p className="font-mono text-[12px] tracking-[1px] fade-up" style={{color:"var(--t5)"}}>THE SAGE</p>
@@ -196,12 +196,16 @@ export default function SagePage() {
                     <span className="text-[12px]" style={{color:"var(--t5)"}}>{bs.episode || bs.decision_category}</span>
                   </div>
                   <p className="text-[13px] font-medium leading-snug mb-2">{bs.title}</p>
-                  <p className="text-[13px] leading-relaxed mb-3" style={{color:"var(--t3)"}}>
-                    {expandedDetail.has(i) ? bs.explanation : bs.explanation?.slice(0, 120) + (bs.explanation?.length > 120 ? "..." : "")}
+                  <div className="mb-3">
+                    <p className="text-[13px] leading-relaxed" style={{color:"var(--t3)"}}>
+                      {expandedDetail.has(i) ? bs.explanation : bs.explanation?.slice(0, 120) + (bs.explanation?.length > 120 ? "..." : "")}
+                    </p>
                     {bs.explanation?.length > 120 && (
-                      <button onClick={() => { const s = new Set(expandedDetail); s.has(i) ? s.delete(i) : s.add(i); setExpandedDetail(s); }} className="ml-1 font-medium cursor-pointer" style={{color: sev.color, background:"none", border:"none", fontSize:11}}>{expandedDetail.has(i) ? "less" : "more"}</button>
+                      <button onClick={() => { const s = new Set(expandedDetail); s.has(i) ? s.delete(i) : s.add(i); setExpandedDetail(s); }} className="mt-1.5 font-medium cursor-pointer text-[12px]" style={{color: sev.color, background:"none", border:"none"}}>
+                        {expandedDetail.has(i) ? "↑ Show less" : "↓ Read more"}
+                      </button>
                     )}
-                  </p>
+                  </div>
                   {/* Guest + expand source */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
