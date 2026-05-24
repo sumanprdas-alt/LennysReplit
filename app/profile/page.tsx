@@ -43,7 +43,10 @@ export default function ProfilePage() {
         <div className="flex gap-4 mt-6 fade-up-2">
           <div className="flex-1 rounded-xl p-5 text-center" style={{background:"var(--bg2)", border:"1px solid var(--border)"}}>
             <div className="font-display text-[32px] font-medium" style={{color:"var(--ac)"}}>{cal}%</div>
-            <p className="font-mono text-[10px] mt-1 tracking-[1px]" style={{color:"var(--t4)"}}>CALIBRATION</p>
+            <div className="flex items-center justify-center gap-1 mt-1">
+              <p className="font-mono text-[10px] tracking-[1px]" style={{color:"var(--t4)"}}>CALIBRATION</p>
+              <span title="How often your instinct matches what the builder actually did. Reflects across all reflections completed." className="w-3.5 h-3.5 rounded-full flex items-center justify-center text-[8px] cursor-help" style={{background:"var(--bg4)", color:"var(--t4)", border:"1px solid var(--border)"}}>i</span>
+            </div>
           </div>
           <div className="flex-1 rounded-xl p-5 text-center" style={{background:"var(--bg2)", border:"1px solid var(--border)"}}>
             <div className="font-display text-[32px] font-medium">{totalSc}</div>

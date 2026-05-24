@@ -128,7 +128,10 @@ export default function DashboardPage() {
 
         {/* Calibration bar */}
         <div className="flex items-center gap-4 mt-4 px-4 py-3 rounded-xl fade-up-3" style={{background:"var(--bg3)", border:"1px solid var(--border)"}}>
-          <div><span className="font-display text-[24px] font-medium" style={{color:"var(--ac)"}}>{cal}</span><span className="text-[11px] ml-0.5" style={{color:"var(--t4)"}}>%</span></div>
+          <div className="flex items-center gap-2">
+        <span className="font-display text-[24px] font-medium" style={{color:"var(--ac)"}}>{cal}</span><span className="text-[11px]" style={{color:"var(--t4)"}}>%</span>
+        <span title="Calibration measures how often your instinct matches what the builder actually did. Higher = sharper product judgment." className="w-4 h-4 rounded-full flex items-center justify-center text-[9px] cursor-help" style={{background:"var(--bg4)", color:"var(--t4)", border:"1px solid var(--border)"}}>i</span>
+      </div>
           <div className="flex-1 h-1 rounded-full" style={{background:"var(--border)"}}><div className="h-full rounded-full transition-all duration-1000" style={{width:`${Math.max(3, cal)}%`, background:"linear-gradient(90deg, var(--ac), var(--ac-dark))"}} /></div>
           <p className="text-[12px]" style={{color:"var(--t4)"}}>{totalSc + totalSg} sessions</p>
         </div>
