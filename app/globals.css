@@ -13,6 +13,15 @@
   --font-body: 'DM Sans','Inter',system-ui,sans-serif;
   --font-mono: 'JetBrains Mono','SF Mono',monospace;
 }
+
+[data-theme="light"] {
+  --bg: #FAF8F4; --bg2: #F0EDE8; --bg3: #E7E4DF; --bg4: #DDDAD5;
+  --border: #D5D2CD; --border2: #C8C5C0;
+  --t1: #1C1917; --t2: #44403C; --t3: #78756E; --t4: #A8A29E; --t5: #D5D2CD;
+  --ac: #5A7A3A; --ac-dark: #4A6530; --ac-bg: rgba(90,122,58,0.06); --ac-border: rgba(90,122,58,0.15);
+  --gold: #A8862E; --red: #C43A3A; --green: #4A6530;
+}
+
 body { font-family: var(--font-body); background: var(--bg); color: var(--t1); -webkit-font-smoothing: antialiased; }
 ::selection { background: rgba(184,212,90,0.2); color: var(--t1); }
 ::-webkit-scrollbar { width: 3px; }

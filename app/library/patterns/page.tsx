@@ -3,7 +3,7 @@ import Shell from "@/components/Shell";
 import Link from "next/link";
 
 export default function Page() {
-  return <Shell><div className="flex-1 p-8 max-w-[640px]">
+  return <Shell><div className="flex-1 p-8 max-w-[820px]">
     <div className="flex items-center gap-3 fade-up">
       <span className="text-[24px]">👤</span>
       <h2 className="font-display text-[24px] font-normal">Founder Patterns</h2>

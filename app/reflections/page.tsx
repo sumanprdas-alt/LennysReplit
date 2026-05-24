@@ -40,7 +40,7 @@ export default function ReflectionsPage() {
   if (loading) return <Shell><div className="flex-1 flex items-center justify-center"><p style={{color:"var(--t4)"}}>Loading...</p></div></Shell>;
 
   // Reveal state
-  if (reveal) return <Shell><div className="flex-1 p-6 max-w-[640px]">
+  if (reveal) return <Shell><div className="flex-1 p-6 max-w-[820px]">
     <div className="text-center mb-6 fade-up">
       <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-3" style={{background: reveal.calibration_correct ? "rgba(184,212,90,.1)" : "rgba(196,165,106,.1)", border: `1px solid ${reveal.calibration_correct ? "var(--ac-border)" : "rgba(196,165,106,.2)"}`}}>
         <span className="text-2xl">{reveal.calibration_correct ? "🎯" : "🔄"}</span>
@@ -82,7 +82,7 @@ export default function ReflectionsPage() {
   </div></Shell>;
 
   // Already completed state
-  if (alreadyCompleted) return <Shell><div className="flex-1 p-6 max-w-[640px]">
+  if (alreadyCompleted) return <Shell><div className="flex-1 p-6 max-w-[820px]">
     <div className="text-center py-8 fade-up">
       <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-4" style={{background:"rgba(184,212,90,.1)", border:"1px solid var(--ac-border)"}}>
         <span className="text-2xl">✅</span>
@@ -103,7 +103,7 @@ export default function ReflectionsPage() {
   </div></Shell>;
 
   // Scenario view
-  return <Shell><div className="flex-1 p-6 max-w-[640px]">
+  return <Shell><div className="flex-1 p-6 max-w-[820px]">
     <p className="font-mono text-[11px] tracking-[1px] fade-up" style={{color:"var(--t5)"}}>REFLECTION · {scenario?.decision_category?.toUpperCase()} · {totalSc + 1} OF 18</p>
     <h2 className="font-display text-[22px] font-normal mt-2 leading-snug fade-up-1">A real <span className="italic" style={{color:"var(--ac)"}}>{scenario?.decision_category}</span> decision.</h2>
     <p className="text-[13px] mt-4 leading-relaxed fade-up-2" style={{color:"var(--t3)"}}>{scenario?.situation}</p>

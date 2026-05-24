@@ -21,7 +21,7 @@ export default function ProfilePage() {
   const recentScenarios = data?.recent_scenarios || [];
   const isEmpty = totalSc === 0 && totalSg === 0;
 
-  return <Shell><div className="flex-1 p-8 max-w-[680px]">
+  return <Shell><div className="flex-1 p-8 max-w-[820px]">
     <p className="font-mono text-[10px] tracking-[1px] fade-up" style={{color:"var(--t4)"}}>FOUNDER PROFILE</p>
     <h2 className="font-display text-[28px] font-normal mt-2 fade-up-1">Your <span className="italic" style={{color:"var(--ac)"}}>decision fingerprint.</span></h2>
 

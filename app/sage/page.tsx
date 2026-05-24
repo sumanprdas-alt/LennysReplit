@@ -59,9 +59,27 @@ export default function SagePage() {
   const [error, setError] = useState("");
   const [step, setStep] = useState(0);
   const [expanded, setExpanded] = useState<number | null>(null);
+  const [expandedDetail, setExpandedDetail] = useState<Set<number>>(new Set());
   const [followUp, setFollowUp] = useState("");
   const [followUpResult, setFollowUpResult] = useState<string | null>(null);
   const [followUpLoading, setFollowUpLoading] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+
+  const speakResults = () => {
+    if (isSpeaking) { window.speechSynthesis.cancel(); setIsSpeaking(false); return; }
+    if (!results) return;
+    const spots = results.blind_spots || [];
+    const text = spots.map((bs: any, i: number) => 
+      `Finding ${i + 1}: ${bs.title}. ${bs.explanation}`
+    ).join(". ") + ". " + (results.tendency_detected ? `Diagnosis: ${results.tendency_detected}` : "");
+    
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 0.9;
+    utterance.pitch = 1;
+    utterance.onend = () => setIsSpeaking(false);
+    window.speechSynthesis.speak(utterance);
+    setIsSpeaking(true);
+  };
 
   const run = async () => {
     const grade = gradeInput(inp); if (!grade.ready) { setError("Please provide more context — at least 50 words."); return; }
@@ -89,7 +107,7 @@ export default function SagePage() {
     finally { setFollowUpLoading(false); }
   };
 
-  return <Shell><div className="flex-1 p-6 max-w-[660px]">
+  return <Shell><div className="flex-1 p-6 max-w-[820px]">
     {!results ? (
       <div>
         <p className="font-mono text-[11px] tracking-[1px] fade-up" style={{color:"var(--t5)"}}>THE SAGE</p>
@@ -178,7 +196,12 @@ export default function SagePage() {
                     <span className="text-[10px]" style={{color:"var(--t5)"}}>{bs.episode || bs.decision_category}</span>
                   </div>
                   <p className="text-[13px] font-medium leading-snug mb-2">{bs.title}</p>
-                  <p className="text-[11px] leading-relaxed mb-3" style={{color:"var(--t3)"}}>{bs.explanation}</p>
+                  <p className="text-[12px] leading-relaxed mb-3" style={{color:"var(--t3)"}}>
+                    {expandedDetail.has(i) ? bs.explanation : bs.explanation?.slice(0, 120) + (bs.explanation?.length > 120 ? "..." : "")}
+                    {bs.explanation?.length > 120 && (
+                      <button onClick={() => { const s = new Set(expandedDetail); s.has(i) ? s.delete(i) : s.add(i); setExpandedDetail(s); }} className="ml-1 font-medium cursor-pointer" style={{color: sev.color, background:"none", border:"none", fontSize:11}}>{expandedDetail.has(i) ? "less" : "more"}</button>
+                    )}
+                  </p>
                   {/* Guest + expand source */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
@@ -258,7 +281,10 @@ export default function SagePage() {
         </div>
 
         <div className="flex gap-2 mt-4">
-          <button onClick={() => { setResults(null); setInp(""); setFollowUp(""); setFollowUpResult(null); }} className="px-4 py-2 rounded-lg text-[10px] font-medium cursor-pointer" style={{border:"1px solid var(--border2)", color:"var(--t4)"}}>Start over</button>
+          <button onClick={speakResults} className="px-4 py-2 rounded-lg text-[11px] font-medium cursor-pointer flex items-center gap-1.5" style={{background: isSpeaking ? "var(--red)" : "var(--bg2)", border:"1px solid var(--border2)", color: isSpeaking ? "var(--t1)" : "var(--t3)"}}>
+            {isSpeaking ? "■ Stop" : "🔊 Listen"}
+          </button>
+          <button onClick={() => { setResults(null); setInp(""); setFollowUp(""); setFollowUpResult(null); window.speechSynthesis.cancel(); setIsSpeaking(false); }} className="px-4 py-2 rounded-lg text-[11px] font-medium cursor-pointer" style={{border:"1px solid var(--border2)", color:"var(--t4)"}}>Start over</button>
         </div>
       </div>
     )}

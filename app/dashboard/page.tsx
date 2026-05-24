@@ -44,7 +44,7 @@ export default function DashboardPage() {
   const isNew = totalSc === 0 && totalSg === 0;
   const greeting = (() => { const h = new Date().getHours(); return h < 12 ? "Good morning" : h < 17 ? "Good afternoon" : "Good evening"; })();
 
-  return <Shell><div className="flex-1 p-6 max-w-[640px]">
+  return <Shell><div className="flex-1 p-6 max-w-[820px]">
     {showTour && <Tour onComplete={() => { setShowTour(false); localStorage.setItem("sage_tour_done", "1"); }} />}
     <div className="fade-up">
       <p className="text-[11px]" style={{color:"var(--t4)"}}>{greeting}, {userName}.</p>
