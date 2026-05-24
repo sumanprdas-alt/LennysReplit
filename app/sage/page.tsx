@@ -197,7 +197,7 @@ export default function SagePage() {
                   <div className="rounded-lg p-3 mt-2" style={{background:"var(--bg)", border:"1px solid var(--border)"}}>
                     <p className="font-mono text-[11px] tracking-[.5px] mb-2" style={{color:"var(--t5)"}}>SOURCE TRANSCRIPT</p>
                     <p className="text-[10px] italic leading-relaxed" style={{color:"var(--t3)"}}>"{bs.guest_insight || bs.explanation}"</p>
-                    <p className="text-[12px] mt-2" style={{color:"var(--t5)"}}>— {bs.guest}, {bs.episode || "Lenny's Podcast"}</p>
+                    <p className="text-[12px] mt-2" style={{color:"var(--t5)"}}>— {bs.guest}{bs.episode ? `, ${bs.episode}` : ""}</p>
                   </div>
                 </div>
               )}
