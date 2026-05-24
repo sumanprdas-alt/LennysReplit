@@ -11,7 +11,7 @@ const STEPS = [
 ];
 const SEV = [
   { border: "var(--red)", label: "CRITICAL", color: "var(--red)", bg: "rgba(226,75,74,.04)" },
-  { border: "var(--gold)", label: "WORTH EXAMINING", color: "var(--gold)", bg: "rgba(196,165,106,.04)" },
+  { border: "var(--gold)", label: "MODERATE", color: "var(--gold)", bg: "rgba(196,165,106,.04)" },
   { border: "var(--green)", label: "INVESTIGATE", color: "var(--green)", bg: "rgba(90,122,58,.04)" },
 ];
 
@@ -27,7 +27,7 @@ function gradeInput(text: string): { level: string; color: string; message: stri
   const uniqueRatio = uniqueWords.size / Math.max(wordCount, 1);
   const hasRealWords = /(the|and|but|our|we|my|is|are|have|this|that|with|for|not|how|what|should|team|product|user|customer|growth|build)/i.test(text);
   
-  if (wordCount >= 5 && (uniqueRatio < 0.3 || !hasRealWords)) return { level: "🔴", color: "var(--red)", message: "The Sage needs real context — describe your situation in your own words.", ready: false, wordCount };
+  if (wordCount >= 5 && (uniqueRatio < 0.3 || !hasRealWords)) return { level: "🔴", color: "var(--red)", message: "That doesn't look like a real situation. Describe what you're facing.", ready: false, wordCount };
   
   // Domain relevance check
   const domainWords = /(product|team|customer|user|revenue|churn|growth|market|pricing|hire|fund|feature|launch|pivot|retention|onboard|strategy|decision|startup|founder|company|build|ship|metric|conversion|engagement|roadmap|competitor|fundrais|investor|scale|acquisition|activation|monetiz|positioning|segment|enterprise|saas|b2b|b2c|arpu|arr|mrr|nps|cac|ltv)/i;
@@ -36,20 +36,20 @@ function gradeInput(text: string): { level: string; color: string; message: stri
   const hasDecision = /(should|whether|debating|deciding|considering|thinking|help|how do|what if|trade-?off|vs|or |dilemma|struggling|challenge|problem|question|concern|worried|unsure)/i.test(text);
   const signals = [hasNumbers, hasDecision, hasDomain].filter(Boolean).length;
   
-  if (wordCount < 10) return { level: "🔴", color: "var(--red)", message: "Keep going — describe what you're building and what's challenging you.", ready: false, wordCount };
-  if (wordCount < 30) return { level: "🟠", color: "var(--gold)", message: `${30 - wordCount} more words — add context about your stage, team, or metrics.`, ready: false, wordCount };
+  if (wordCount < 10) return { level: "🔴", color: "var(--red)", message: "Keep going — what's the situation and what are you weighing?", ready: false, wordCount };
+  if (wordCount < 30) return { level: "🟠", color: "var(--gold)", message: `${30 - wordCount} more words. Add your stage, numbers, or what you've tried.`, ready: false, wordCount };
   
   // 30+ words — minimum viable context
   if (wordCount < 50) {
-    if (!hasDomain) return { level: "🟡", color: "var(--gold)", message: "Mention your product, team, or specific challenge for better results.", ready: true, wordCount };
-    if (signals >= 2) return { level: "🟢", color: "var(--ac)", message: "Good context. Add more specifics for an even deeper diagnosis.", ready: true, wordCount };
-    return { level: "🟡", color: "var(--gold)", message: "Almost there — try adding numbers (users, revenue, team size) for precision.", ready: true, wordCount };
+    if (!hasDomain) return { level: "🟡", color: "var(--gold)", message: "Try adding specifics — numbers, team size, what you've tried.", ready: true, wordCount };
+    if (signals >= 2) return { level: "🟢", color: "var(--ac)", message: "Good. A few more details and the diagnosis gets sharper.", ready: true, wordCount };
+    return { level: "🟡", color: "var(--gold)", message: "Almost — drop in some numbers (users, revenue, runway) for precision.", ready: true, wordCount };
   }
   
   // 50+ words — excellent territory
-  if (!hasDomain) return { level: "🟡", color: "var(--gold)", message: "Lots of context, but mention your product domain for more relevant insights.", ready: true, wordCount };
-  if (signals >= 2) return { level: "🟢", color: "var(--ac)", message: "Excellent context — the Sage will give you a precise diagnosis.", ready: true, wordCount };
-  return { level: "🟢", color: "var(--ac)", message: "Strong context — the Sage can work with this.", ready: true, wordCount };
+  if (!hasDomain) return { level: "🟡", color: "var(--gold)", message: "Good context. Mention your product type for sharper results.", ready: true, wordCount };
+  if (signals >= 2) return { level: "🟢", color: "var(--ac)", message: "Strong input. Expect a precise diagnosis.", ready: true, wordCount };
+  return { level: "🟢", color: "var(--ac)", message: "Good to go.", ready: true, wordCount };
 }
 
 export default function SagePage() {
@@ -93,7 +93,7 @@ export default function SagePage() {
     {!results ? (
       <div>
         <p className="font-mono text-[11px] tracking-[1px] fade-up" style={{color:"var(--t5)"}}>THE SAGE</p>
-        <h2 className="font-display text-[22px] font-normal mt-2 fade-up-1">What's on <span className="italic" style={{color:"var(--ac)"}}>your mind?</span></h2>
+        <h2 className="font-display text-[22px] font-normal mt-2 fade-up-1">Describe <span className="italic" style={{color:"var(--ac)"}}>the decision.</span></h2>
 
         {loading ? (
           <div className="mt-8 fade-up">
@@ -120,7 +120,7 @@ export default function SagePage() {
         ) : (
           <div className="mt-5 fade-up-2">
             <div className="relative">
-              <textarea value={inp} onChange={e => setInp(e.target.value)} placeholder="Paste meeting notes, describe a decision, share what's weighing on you..."
+              <textarea value={inp} onChange={e => setInp(e.target.value)} placeholder="What's the situation? What are you weighing? What have you tried?"
                 className="w-full h-[150px] px-4 py-4 rounded-xl text-[13px] outline-none resize-none leading-relaxed pr-12" style={{background:"var(--bg2)", border:"1px solid var(--border)", color:"var(--t1)"}} />
               <div className="absolute top-3 right-3"><VoiceRecorder onTranscript={t => setInp(prev => prev + t)} /></div>
             </div>
@@ -133,7 +133,7 @@ export default function SagePage() {
               ) : null; })()}
               {error && <p className="text-red-400 text-xs mt-1">{error}</p>}
             <button onClick={run} disabled={!gradeInput(inp).ready} className="w-full py-3 mt-3 rounded-xl text-[13px] font-medium cursor-pointer transition-all"
-              style={{background: !gradeInput(inp).ready ? "var(--bg3)" : "var(--ac)", color: !gradeInput(inp).ready ? "var(--t5)" : "var(--bg)"}}>Reflect →</button>
+              style={{background: !gradeInput(inp).ready ? "var(--bg3)" : "var(--ac)", color: !gradeInput(inp).ready ? "var(--t5)" : "var(--bg)"}}>Run diagnosis →</button>
           </div>
         )}
       </div>
@@ -149,7 +149,7 @@ export default function SagePage() {
           </svg>
           <div>
             <p className="font-mono text-[11px] tracking-[1px]" style={{color:"var(--t5)"}}>DIAGNOSTIC REPORT</p>
-            <p className="font-display text-[18px] font-normal mt-0.5">{results.blind_spots?.length || 0} patterns <span className="italic" style={{color:"var(--ac)"}}>the Sage noticed.</span></p>
+            <p className="font-display text-[18px] font-normal mt-0.5">{results.blind_spots?.length || 0} blind spots <span className="italic" style={{color:"var(--ac)"}}>identified.</span></p>
             <p className="text-[12px] mt-0.5" style={{color:"var(--t5)"}}>12 segments matched · {new Set(results.blind_spots?.map((b: any) => b.guest)).size || 0} guests cited</p>
           </div>
         </div>
@@ -186,7 +186,7 @@ export default function SagePage() {
                       <span className="text-[10px]" style={{color:"var(--t4)"}}>{bs.guest}</span>
                     </div>
                     <button onClick={() => setExpanded(isExpanded ? null : i)} className="text-[12px] font-medium cursor-pointer" style={{color: sev.color, background:"none", border:"none"}}>
-                      {isExpanded ? "Hide source ↑" : "View source ↓"}
+                      {isExpanded ? "Hide evidence ↑" : "See the evidence ↓"}
                     </button>
                   </div>
                 </div>
@@ -195,7 +195,7 @@ export default function SagePage() {
               {isExpanded && (
                 <div className="px-4 pb-4 pt-0">
                   <div className="rounded-lg p-3 mt-2" style={{background:"var(--bg)", border:"1px solid var(--border)"}}>
-                    <p className="font-mono text-[11px] tracking-[.5px] mb-2" style={{color:"var(--t5)"}}>SOURCE TRANSCRIPT</p>
+                    <p className="font-mono text-[11px] tracking-[.5px] mb-2" style={{color:"var(--t5)"}}>FROM THE CONVERSATION</p>
                     <p className="text-[10px] italic leading-relaxed" style={{color:"var(--t3)"}}>"{bs.guest_insight || bs.explanation}"</p>
                     <p className="text-[12px] mt-2" style={{color:"var(--t5)"}}>— {bs.guest}{bs.episode ? `, ${bs.episode}` : ""}</p>
                   </div>
@@ -239,8 +239,8 @@ export default function SagePage() {
 
         {/* Follow-up conversation */}
         <div className="mt-5 rounded-xl p-4 fade-up-4" style={{background:"var(--bg2)", border:"1px solid var(--border)"}}>
-          <p className="font-mono text-[11px] tracking-[1px] mb-2" style={{color:"var(--ac)"}}>GO DEEPER</p>
-          <p className="text-[12px] mb-3" style={{color:"var(--t3)"}}>Which pattern surprised you? The Sage can dig deeper.</p>
+          <p className="font-mono text-[11px] tracking-[1px] mb-2" style={{color:"var(--ac)"}}>DIG DEEPER</p>
+          <p className="text-[12px] mb-3" style={{color:"var(--t3)"}}>What stood out? Ask a follow-up and the Sage will go deeper.</p>
           {followUpResult ? (
             <div className="rounded-lg p-3 mb-3" style={{background:"var(--bg)", border:"1px solid var(--border)"}}>
               <p className="text-[11px] leading-relaxed" style={{color:"var(--t2)"}}>{followUpResult}</p>
@@ -258,7 +258,7 @@ export default function SagePage() {
         </div>
 
         <div className="flex gap-2 mt-4">
-          <button onClick={() => { setResults(null); setInp(""); setFollowUp(""); setFollowUpResult(null); }} className="px-4 py-2 rounded-lg text-[10px] font-medium cursor-pointer" style={{border:"1px solid var(--border2)", color:"var(--t4)"}}>New consultation</button>
+          <button onClick={() => { setResults(null); setInp(""); setFollowUp(""); setFollowUpResult(null); }} className="px-4 py-2 rounded-lg text-[10px] font-medium cursor-pointer" style={{border:"1px solid var(--border2)", color:"var(--t4)"}}>Start over</button>
         </div>
       </div>
     )}

@@ -23,15 +23,15 @@ export default function ProfilePage() {
 
   return <Shell><div className="flex-1 p-8 max-w-[680px]">
     <p className="font-mono text-[10px] tracking-[1px] fade-up" style={{color:"var(--t4)"}}>FOUNDER PROFILE</p>
-    <h2 className="font-display text-[28px] font-normal mt-2 fade-up-1">Here's what <span className="italic" style={{color:"var(--ac)"}}>the Sage notices.</span></h2>
+    <h2 className="font-display text-[28px] font-normal mt-2 fade-up-1">Your <span className="italic" style={{color:"var(--ac)"}}>decision fingerprint.</span></h2>
 
     {isEmpty ? (
       <div className="mt-8 rounded-xl p-10 text-center fade-up-2" style={{background:"var(--bg2)", border:"1px solid var(--border)"}}>
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4" style={{background:"var(--ac-bg)", border:"1px solid var(--ac-border)"}}>
           <span className="text-3xl">📊</span>
         </div>
-        <h3 className="font-display text-[20px] font-normal mb-3">Your journey starts here.</h3>
-        <p className="text-[14px] leading-relaxed max-w-[380px] mx-auto mb-6" style={{color:"var(--t3)"}}>Complete reflections and consult the Sage to build your founder profile. The more you think, the clearer your patterns become.</p>
+        <h3 className="font-display text-[20px] font-normal mb-3">Nothing here yet.</h3>
+        <p className="text-[14px] leading-relaxed max-w-[380px] mx-auto mb-6" style={{color:"var(--t3)"}}>Your decision fingerprint builds as you reflect and consult. Every session reveals more about how you think.</p>
         <div className="flex gap-3 justify-center">
           <a href="/reflections" className="px-6 py-3 rounded-lg text-[14px] font-medium cursor-pointer no-underline" style={{background:"var(--ac)", color:"var(--bg)"}}>Start your first reflection →</a>
           <a href="/sage" className="px-6 py-3 rounded-lg text-[14px] font-medium cursor-pointer no-underline" style={{border:"1px solid var(--border2)", color:"var(--t3)"}}>Consult the Sage</a>
@@ -51,14 +51,14 @@ export default function ProfilePage() {
           </div>
           <div className="flex-1 rounded-xl p-5 text-center" style={{background:"var(--bg2)", border:"1px solid var(--border)"}}>
             <div className="font-display text-[32px] font-medium">{totalSg}</div>
-            <p className="font-mono text-[10px] mt-1 tracking-[1px]" style={{color:"var(--t4)"}}>SAGE SESSIONS</p>
+            <p className="font-mono text-[10px] mt-1 tracking-[1px]" style={{color:"var(--t4)"}}>CONSULTATIONS</p>
           </div>
         </div>
 
         {/* Decision landscape */}
         {cats.length > 0 && (
           <div className="mt-6 rounded-xl p-5 fade-up-3" style={{background:"var(--bg2)", border:"1px solid var(--border)"}}>
-            <p className="font-mono text-[10px] tracking-[1px] mb-4" style={{color:"var(--t4)"}}>DECISION LANDSCAPE</p>
+            <p className="font-mono text-[10px] tracking-[1px] mb-4" style={{color:"var(--t4)"}}>WHERE YOU FOCUS</p>
             {cats.map(([k, v]: any) => {
               const bl = bls.includes(k);
               const [ico] = CATS[k] || ["📊"];
@@ -76,7 +76,7 @@ export default function ProfilePage() {
 
         {/* Journey timeline */}
         <div className="mt-6 fade-up-3">
-          <p className="font-mono text-[10px] tracking-[1px] mb-4" style={{color:"var(--t4)"}}>YOUR THINKING JOURNEY</p>
+          <p className="font-mono text-[10px] tracking-[1px] mb-4" style={{color:"var(--t4)"}}>TIMELINE</p>
           <div className="pl-5 border-l-2 ml-2" style={{borderColor:"var(--border)"}}>
             {recentSage.map((s: any, i: number) => (
               <div key={`sg-${i}`} className="relative mb-5">
@@ -98,7 +98,7 @@ export default function ProfilePage() {
             ))}
             <div className="relative">
               <div className="absolute -left-[23px] top-[4px] w-3 h-3 rounded-full border-2" style={{borderColor:"var(--border)", borderStyle:"dashed", background:"var(--bg)"}} />
-              <p className="text-[13px]" style={{color:"var(--t4)"}}>{Math.max(0, 18 - totalSc)} more reflections to discover...</p>
+              <p className="text-[13px]" style={{color:"var(--t4)"}}>{Math.max(0, 18 - totalSc)} reflections remaining</p>
             </div>
           </div>
         </div>
@@ -106,7 +106,7 @@ export default function ProfilePage() {
         {/* Pattern */}
         {p?.tendencies && (
           <div className="rounded-xl p-5 mt-6 fade-up-4" style={{background:"var(--ac-bg)", border:"1px solid var(--ac-border)"}}>
-            <p className="font-mono text-[10px] tracking-[1px] mb-2" style={{color:"var(--ac)"}}>A PATTERN WORTH NOTICING</p>
+            <p className="font-mono text-[10px] tracking-[1px] mb-2" style={{color:"var(--ac)"}}>THE SAGE OBSERVES</p>
             <p className="font-display text-[15px] italic leading-relaxed" style={{color:"var(--t2)"}}>{p.tendencies}</p>
           </div>
         )}

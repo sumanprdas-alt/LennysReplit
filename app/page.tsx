@@ -33,19 +33,19 @@ export default function LandingPage() {
 
       {/* Hero — clean, no AI label */}
       <div className="flex-1 flex flex-col items-center justify-center relative z-10 px-6 text-center" style={{ paddingTop: "4vh" }}>
-        <h1 className="font-display text-[56px] md:text-[72px] font-normal leading-none tracking-tight fade-up-1" style={{ letterSpacing: "-2px", maxWidth: 700 }}>Strategic clarity<br/>for builders.</h1>
-        <p className="text-[16px] md:text-[18px] mt-7 leading-relaxed max-w-[480px] fade-up-2" style={{ color: "var(--t3)" }}>Search, synthesize, and learn from the world's best product leaders.</p>
+        <h1 className="font-display text-[56px] md:text-[72px] font-normal leading-none tracking-tight fade-up-1" style={{ letterSpacing: "-2px", maxWidth: 700 }}>Think clearer.<br/>Build smarter.</h1>
+        <p className="text-[16px] md:text-[18px] mt-7 leading-relaxed max-w-[480px] fade-up-2" style={{ color: "var(--t3)" }}>The strategic advisor that draws on 300+ conversations with world-class founders to find what you're missing.</p>
 
         {/* Auth buttons */}
         <div className="flex gap-3 mt-10 fade-up-3">
-          <button onClick={() => { setIsSignUp(true); setShowAuth(true); }} className="px-8 py-3 rounded-xl text-[14px] font-medium cursor-pointer" style={{ background: "var(--ac)", color: "var(--bg)" }}>Sign up →</button>
-          <button onClick={() => { setIsSignUp(false); setShowAuth(true); }} className="px-8 py-3 rounded-xl text-[14px] font-medium cursor-pointer" style={{ border: "1px solid var(--border2)", color: "var(--t2)" }}>Log in</button>
+          <button onClick={() => { setIsSignUp(true); setShowAuth(true); }} className="px-8 py-3 rounded-xl text-[14px] font-medium cursor-pointer" style={{ background: "var(--ac)", color: "var(--bg)" }}>Get started — free</button>
+          <button onClick={() => { setIsSignUp(false); setShowAuth(true); }} className="px-8 py-3 rounded-xl text-[14px] font-medium cursor-pointer" style={{ border: "1px solid var(--border2)", color: "var(--t2)" }}>Sign in</button>
         </div>
       </div>
 
       {/* Footer */}
       <div className="relative z-10 text-center pb-6 fade-up-4" style={{ paddingTop: "40px" }}>
-        <p className="text-[11px]" style={{ color: "var(--t4)" }}>Powered with valuable insights from Lenny's Podcast</p>
+        <p className="text-[11px]" style={{ color: "var(--t4)" }}>Built on wisdom from 300+ Lenny's Podcast conversations</p>
       </div>
 
       {/* Auth modal */}
@@ -60,7 +60,7 @@ export default function LandingPage() {
               <button onClick={() => setShowAuth(false)} className="text-lg cursor-pointer" style={{ color: "var(--t4)", background: "none", border: "none" }}>✕</button>
             </div>
             <h2 className="font-display text-[22px] font-normal mb-1">{isSignUp ? "Create your account" : "Welcome back"}</h2>
-            <p className="text-[13px] mb-6" style={{ color: "var(--t3)" }}>{isSignUp ? "Start building clarity." : "Continue where you left off."}</p>
+            <p className="text-[13px] mb-6" style={{ color: "var(--t3)" }}>{isSignUp ? "You're two minutes from your first insight." : "Your thinking space is waiting."}</p>
             <form onSubmit={handleSubmit} className="space-y-2.5">
               {isSignUp && <input value={name} onChange={e => setName(e.target.value)} placeholder="Name" className="w-full px-4 py-3 rounded-lg text-sm outline-none" style={{ background: "var(--bg3)", border: "1px solid var(--border)", color: "var(--t1)" }} required />}
               <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" className="w-full px-4 py-3 rounded-lg text-sm outline-none" style={{ background: "var(--bg3)", border: "1px solid var(--border)", color: "var(--t1)" }} required />

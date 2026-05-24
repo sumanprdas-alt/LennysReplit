@@ -3,9 +3,9 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const STEPS = [
-  { q: "What stage are you at?", sage: "Let me find the builders whose journey mirrors yours.", opts: ["Pre-seed","Seed","Series A","Series B+","Growth"] },
-  { q: "What are you building?", sage: "Every domain has its own decision patterns.", opts: ["B2B SaaS","Consumer","Dev Tools","Marketplace","AI / ML"] },
-  { q: "How big is your team?", sage: "Team size shapes how decisions get made.", opts: ["Solo","2–5","6–15","16–50","50+"] },
+  { q: "What stage are you at?", sage: "The Sage calibrates to your world.", opts: ["Pre-seed","Seed","Series A","Series B+","Growth"] },
+  { q: "What are you building?", sage: "Different problems, different playbooks.", opts: ["B2B SaaS","Consumer","Dev Tools","Marketplace","AI / ML"] },
+  { q: "How big is your team?", sage: "A solo founder and a 50-person team think differently.", opts: ["Solo","2–5","6–15","16–50","50+"] },
 ];
 
 export default function OnboardingPage() {
@@ -25,11 +25,11 @@ export default function OnboardingPage() {
 
   if (step === STEPS.length) return wrap(<>
     <div className="fade-up">{bar}</div>
-    <p className="text-[13px] mt-6 italic font-display fade-up-1" style={{ color:"var(--t3)" }}>Almost there. What's on your mind?</p>
-    <h2 className="font-display text-[28px] font-light mt-3.5 leading-tight fade-up-2" style={{ color:"var(--t1)" }}>What keeps you<br/><span className="font-medium italic" style={{ color:"var(--ac)" }}>up at night?</span></h2>
-    <textarea value={ch} onChange={e=>setCh(e.target.value)} placeholder="e.g., Our churn is 8% and I can't tell if it's product or positioning..."
+    <p className="text-[13px] mt-6 italic font-display fade-up-1" style={{ color:"var(--t3)" }}>One more thing.</p>
+    <h2 className="font-display text-[28px] font-light mt-3.5 leading-tight fade-up-2" style={{ color:"var(--t1)" }}>What's the hardest decision you're<br/><span className="font-medium italic" style={{ color:"var(--ac)" }}>facing right now?</span></h2>
+    <textarea value={ch} onChange={e=>setCh(e.target.value)} placeholder="e.g. We're growing but churn is eating our gains. Should we fix onboarding or double down on acquisition?"
       className="w-full h-[100px] px-3.5 py-3 mt-5 rounded-md text-[13px] outline-none resize-none leading-relaxed fade-up-3" style={{ background:"var(--bg2)", border:"0.5px solid var(--border)", color:"var(--t1)" }} />
-    <button onClick={handleFinish} disabled={loading} className="w-full py-2.5 mt-2.5 rounded-md text-[13px] font-medium cursor-pointer disabled:opacity-50 fade-up-3" style={{ background:"var(--ac)", color:"var(--bg)" }}>{loading?"Setting up...":"Begin →"}</button>
+    <button onClick={handleFinish} disabled={loading} className="w-full py-2.5 mt-2.5 rounded-md text-[13px] font-medium cursor-pointer disabled:opacity-50 fade-up-3" style={{ background:"var(--ac)", color:"var(--bg)" }}>{loading?"Preparing your space...":"Begin →"}</button>
   </>);
 
   const c = STEPS[step];

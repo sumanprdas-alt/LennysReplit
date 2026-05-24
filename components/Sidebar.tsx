@@ -52,7 +52,7 @@ export default function Sidebar() {
           <span>Sign out</span>
         </button>
         <div className="px-3 py-2.5 border-t" style={{ borderColor: "var(--border)" }}>
-          <p className="text-[11px] leading-relaxed" style={{ color: "var(--t5)" }}>Powered with valuable insights<br/>from Lenny's Podcast</p>
+          <p className="text-[11px] leading-relaxed" style={{ color: "var(--t5)" }}>Wisdom from 300+ Lenny's<br/>Podcast conversations</p>
         </div>
       </div>
     </div>

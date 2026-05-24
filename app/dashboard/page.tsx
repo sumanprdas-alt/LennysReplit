@@ -48,7 +48,7 @@ export default function DashboardPage() {
     {showTour && <Tour onComplete={() => { setShowTour(false); localStorage.setItem("sage_tour_done", "1"); }} />}
     <div className="fade-up">
       <p className="text-[11px]" style={{color:"var(--t4)"}}>{greeting}, {userName}.</p>
-      <h1 className="font-display text-[22px] font-normal mt-1">What shall we think through today?</h1>
+      <h1 className="font-display text-[22px] font-normal mt-1">What's the decision?</h1>
     </div>
 
     {/* Search */}
@@ -66,11 +66,11 @@ export default function DashboardPage() {
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-4" style={{background:"var(--ac-bg)", border:"1px solid var(--ac-border)"}}>
             <span className="text-2xl">🧭</span>
           </div>
-          <h2 className="font-display text-[18px] font-normal mb-2">Welcome to your thinking space.</h2>
-          <p className="text-[12px] leading-relaxed max-w-[360px] mx-auto mb-5" style={{color:"var(--t3)"}}>Start with a reflection to calibrate your product judgment, or consult the Sage with a real challenge you're facing.</p>
+          <h2 className="font-display text-[18px] font-normal mb-2">Your strategic advisor is ready.</h2>
+          <p className="text-[12px] leading-relaxed max-w-[360px] mx-auto mb-5" style={{color:"var(--t3)"}}>Start with a daily reflection to sharpen your judgment, or bring a real challenge to the Sage.</p>
           <div className="flex gap-3 justify-center">
-            <button onClick={() => router.push("/reflections")} className="px-5 py-2.5 rounded-lg text-[12px] font-medium cursor-pointer" style={{background:"var(--ac)", color:"var(--bg)"}}>Start your first reflection →</button>
-            <button onClick={() => router.push("/sage")} className="px-5 py-2.5 rounded-lg text-[12px] font-medium cursor-pointer" style={{border:"1px solid var(--border2)", color:"var(--t3)"}}>Consult the Sage</button>
+            <button onClick={() => router.push("/reflections")} className="px-5 py-2.5 rounded-lg text-[12px] font-medium cursor-pointer" style={{background:"var(--ac)", color:"var(--bg)"}}>Try a reflection →</button>
+            <button onClick={() => router.push("/sage")} className="px-5 py-2.5 rounded-lg text-[12px] font-medium cursor-pointer" style={{border:"1px solid var(--border2)", color:"var(--t3)"}}>Ask the Sage</button>
           </div>
         </div>
       </div>
@@ -91,8 +91,8 @@ export default function DashboardPage() {
           <div onClick={() => router.push("/sage")} id="consult-card" className="flex-1 rounded-xl p-4 cursor-pointer relative overflow-hidden transition-all hover:border-[var(--border2)]" style={{background:"var(--bg2)", border:"1px solid var(--border)", borderLeft:"3px solid var(--gold)"}}>
             <div className="absolute top-0 right-0 w-16 h-16 pointer-events-none" style={{background:"radial-gradient(circle at 100% 0%, rgba(196,165,106,.1), transparent 70%)"}} />
             <p className="font-mono text-[11px] tracking-[1.2px] mb-2" style={{color:"var(--gold)"}}>CONSULT</p>
-            <p className="text-[13px] font-medium leading-snug mb-1">Paste a challenge, get clarity from 300+ builders.</p>
-            <p className="text-[12px] mb-3" style={{color:"var(--t4)"}}>3,839 conversations indexed</p>
+            <p className="text-[13px] font-medium leading-snug mb-1">Bring a real decision. Get patterns you're missing.</p>
+            <p className="text-[12px] mb-3" style={{color:"var(--t4)"}}>Drawing from 3,839 conversations</p>
             <div className="flex gap-1 mb-1">
               <span className="w-1.5 h-1.5 rounded-full" style={{background:"var(--ac)"}} /><span className="w-1.5 h-1.5 rounded-full" style={{background:"var(--gold)"}} /><span className="w-1.5 h-1.5 rounded-full" style={{background:"var(--red)"}} />
             </div>

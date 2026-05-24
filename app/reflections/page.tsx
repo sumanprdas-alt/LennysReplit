@@ -46,7 +46,7 @@ export default function ReflectionsPage() {
         <span className="text-2xl">{reveal.calibration_correct ? "🎯" : "🔄"}</span>
       </div>
       <p className="font-mono text-[11px] tracking-[1px]" style={{color:"var(--t5)"}}>REFLECTION RESULT · {totalSc + 1} OF 18</p>
-      <h2 className="font-display text-[22px] font-normal mt-1">{reveal.calibration_correct ? <>You aligned with <span className="italic" style={{color:"var(--ac)"}}>the builder.</span></> : <>A different <span className="italic" style={{color:"var(--gold)"}}>perspective.</span></>}</h2>
+      <h2 className="font-display text-[22px] font-normal mt-1">{reveal.calibration_correct ? <>Same instinct as <span className="italic" style={{color:"var(--ac)"}}>the builder.</span></> : <>You saw it <span className="italic" style={{color:"var(--gold)"}}>differently.</span></>}</h2>
     </div>
 
     <div className="flex rounded-xl overflow-hidden fade-up-1" style={{border:"1px solid var(--border)"}}>
@@ -62,7 +62,7 @@ export default function ReflectionsPage() {
 
     {reveal.personal_insight && (
       <div className="rounded-xl p-4 mt-3 fade-up-2" style={{background:"var(--ac-bg)", border:"1px solid var(--ac-border)"}}>
-        <p className="font-mono text-[11px] tracking-[1px] mb-1.5" style={{color:"var(--ac)"}}>A PATTERN WORTH NOTICING</p>
+        <p className="font-mono text-[11px] tracking-[1px] mb-1.5" style={{color:"var(--ac)"}}>THE SAGE OBSERVES</p>
         <p className="font-display text-[12px] italic leading-relaxed" style={{color:"var(--t2)"}}>{reveal.personal_insight}</p>
       </div>
     )}
@@ -76,8 +76,8 @@ export default function ReflectionsPage() {
     </div>
 
     <div className="flex gap-2 mt-4 fade-up-4">
-      <button onClick={() => router.push("/dashboard")} className="px-5 py-2.5 rounded-lg text-[11px] font-medium cursor-pointer" style={{border:"1px solid var(--border2)", color:"var(--t4)"}}>← Back to today</button>
-      <button onClick={() => { setReveal(null); setSel(null); setReasoning(""); setAlreadyCompleted(false); }} className="px-5 py-2.5 rounded-lg text-[11px] font-medium cursor-pointer" style={{background:"var(--ac)", color:"var(--bg)"}}>Next reflection →</button>
+      <button onClick={() => router.push("/dashboard")} className="px-5 py-2.5 rounded-lg text-[11px] font-medium cursor-pointer" style={{border:"1px solid var(--border2)", color:"var(--t4)"}}>← Dashboard</button>
+      <button onClick={() => { setReveal(null); setSel(null); setReasoning(""); setAlreadyCompleted(false); }} className="px-5 py-2.5 rounded-lg text-[11px] font-medium cursor-pointer" style={{background:"var(--ac)", color:"var(--bg)"}}>Next →</button>
     </div>
   </div></Shell>;
 
@@ -87,8 +87,8 @@ export default function ReflectionsPage() {
       <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-4" style={{background:"rgba(184,212,90,.1)", border:"1px solid var(--ac-border)"}}>
         <span className="text-2xl">✅</span>
       </div>
-      <h2 className="font-display text-[22px] font-normal mb-2">Today's reflection <span className="italic" style={{color:"var(--ac)"}}>complete.</span></h2>
-      <p className="text-[13px] leading-relaxed max-w-[360px] mx-auto mb-2" style={{color:"var(--t3)"}}>You've completed {totalSc} of 18 reflections. Come back tomorrow for a new one, or consult the Sage with a challenge you're facing now.</p>
+      <h2 className="font-display text-[22px] font-normal mb-2">Reflection <span className="italic" style={{color:"var(--ac)"}}>locked in.</span></h2>
+      <p className="text-[13px] leading-relaxed max-w-[360px] mx-auto mb-2" style={{color:"var(--t3)"}}>You've completed {totalSc} of 18. New reflections drop daily — or bring a live challenge to the Sage.</p>
       <div className="flex items-center gap-3 justify-center mt-2 mb-6 px-4 py-2 rounded-full inline-flex" style={{background:"var(--bg3)"}}>
         <div className="flex-1 h-1 rounded-full w-32" style={{background:"var(--border)"}}>
           <div className="h-full rounded-full" style={{width:`${(totalSc/18)*100}%`, background:"var(--ac)"}} />
@@ -105,11 +105,11 @@ export default function ReflectionsPage() {
   // Scenario view
   return <Shell><div className="flex-1 p-6 max-w-[640px]">
     <p className="font-mono text-[11px] tracking-[1px] fade-up" style={{color:"var(--t5)"}}>REFLECTION · {scenario?.decision_category?.toUpperCase()} · {totalSc + 1} OF 18</p>
-    <h2 className="font-display text-[22px] font-normal mt-2 leading-snug fade-up-1">A {scenario?.decision_category} decision <span className="italic" style={{color:"var(--ac)"}}>worth examining.</span></h2>
+    <h2 className="font-display text-[22px] font-normal mt-2 leading-snug fade-up-1">A real <span className="italic" style={{color:"var(--ac)"}}>{scenario?.decision_category}</span> decision.</h2>
     <p className="text-[13px] mt-4 leading-relaxed fade-up-2" style={{color:"var(--t3)"}}>{scenario?.situation}</p>
     <p className="text-[10px] mt-2 fade-up-2" style={{color:"var(--t5)"}}>{scenario?.guest} · Lenny's Podcast</p>
 
-    <p className="font-mono text-[11px] tracking-[1px] mt-6 mb-3 fade-up-3" style={{color:"var(--t5)"}}>WHAT WOULD YOU DO?</p>
+    <p className="font-mono text-[11px] tracking-[1px] mt-6 mb-3 fade-up-3" style={{color:"var(--t5)"}}>YOUR CALL</p>
     <div className="flex flex-col gap-2 fade-up-3">
       {scenario?.options?.map((opt: any, i: number) => (
         <button key={opt.label} onClick={() => setSel(opt.label)}
@@ -122,10 +122,10 @@ export default function ReflectionsPage() {
       ))}
     </div>
     {sel && <div className="fade-up">
-      <textarea value={reasoning} onChange={e => setReasoning(e.target.value)} placeholder="Your reasoning (optional — helps the Sage learn your thinking patterns)"
+      <textarea value={reasoning} onChange={e => setReasoning(e.target.value)} placeholder="Why this choice? (optional — sharpens your profile)"
         className="w-full h-[55px] px-4 py-3 mt-3 rounded-xl text-[12px] outline-none resize-none leading-relaxed" style={{background:"var(--bg2)", border:"1px solid var(--border)", color:"var(--t1)"}} />
       <button onClick={handleSubmit} disabled={submitting} className="w-full py-3 mt-2.5 rounded-xl text-[13px] font-medium cursor-pointer disabled:opacity-50" style={{background:"var(--ac)", color:"var(--bg)"}}>
-        {submitting ? <span className="flex items-center justify-center gap-2"><span className="w-3 h-3 rounded-full border-2 animate-spin" style={{borderColor:"rgba(0,0,0,.2)", borderTopColor:"var(--bg)"}} />Reflecting...</span> : "Submit →"}
+        {submitting ? <span className="flex items-center justify-center gap-2"><span className="w-3 h-3 rounded-full border-2 animate-spin" style={{borderColor:"rgba(0,0,0,.2)", borderTopColor:"var(--bg)"}} />Reflecting...</span> : "Lock it in →"}
       </button>
     </div>}
   </div></Shell>;

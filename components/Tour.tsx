@@ -4,29 +4,29 @@ import { useState, useEffect } from "react";
 const STEPS = [
   {
     target: "search-bar",
-    title: "Your thinking space",
-    desc: "Ask the Sage anything about strategy, product, or execution. It searches 3,839 conversations from the world's best product leaders.",
+    title: "This is the Sage",
+    desc: "Describe any product decision or challenge. The Sage searches 3,839 conversations from world-class founders to surface what you're missing.",
     position: "bottom",
     icon: "🧭",
   },
   {
     target: "reflect-card",
-    title: "Daily reflections",
-    desc: "Face real decisions that real builders faced. Make your call, then see what actually happened — and what it reveals about your thinking.",
+    title: "Sharpen your judgment",
+    desc: "Real decisions from real founders. Pick what you'd do, then discover what actually happened — and what it says about your instincts.",
     position: "bottom",
     icon: "💭",
   },
   {
     target: "consult-card",
-    title: "Consult the Sage",
-    desc: "Paste meeting notes or describe a challenge. The Sage finds patterns you're missing, grounded in insights from 300+ podcast conversations.",
+    title: "Get a diagnosis",
+    desc: "Paste context from a meeting, a strategy doc, or just describe what you're weighing. The Sage returns a diagnostic with specific blind spots.",
     position: "bottom",
     icon: "🔮",
   },
   {
     target: "sidebar-profile",
-    title: "Track your growth",
-    desc: "Your Founder Profile builds over time — calibration score, decision landscape, blind spots, and a timeline of your thinking journey.",
+    title: "Watch yourself evolve",
+    desc: "Your decision fingerprint develops with every session. See your calibration score, blind spots, and how your thinking patterns shift over time.",
     position: "right",
     icon: "📊",
   },
@@ -108,7 +108,7 @@ export default function Tour({ onComplete }: { onComplete: () => void }) {
               <button onClick={() => setStep(step - 1)} style={{ padding: "6px 14px", borderRadius: 8, fontSize: 12, color: "var(--t3)", background: "none", border: "1px solid var(--border2)", cursor: "pointer" }}>← Back</button>
             )}
             <button onClick={() => isLast ? onComplete() : setStep(step + 1)} style={{ padding: "6px 14px", borderRadius: 8, fontSize: 12, fontWeight: 500, color: "var(--bg)", background: "var(--ac)", border: "none", cursor: "pointer" }}>
-              {isLast ? "Start exploring →" : "Next →"}
+              {isLast ? "Let's go →" : "Next →"}
             </button>
           </div>
         </div>
