@@ -50,11 +50,17 @@ export default function ProfilePage() {
           </div>
           <div className="flex-1 rounded-xl p-5 text-center" style={{background:"var(--bg2)", border:"1px solid var(--border)"}}>
             <div className="font-display text-[32px] font-medium">{totalSc}</div>
-            <p className="font-mono text-[10px] mt-1 tracking-[1px]" style={{color:"var(--t4)"}}>REFLECTIONS</p>
+            <div className="flex items-center justify-center gap-1 mt-1">
+              <p className="font-mono text-[10px] tracking-[1px]" style={{color:"var(--t4)"}}>REFLECTIONS</p>
+              <span title="Daily scenario exercises based on real decisions from Lenny's Podcast guests. Each one tests your product instinct." className="w-3.5 h-3.5 rounded-full flex items-center justify-center text-[8px] cursor-help" style={{background:"var(--bg4)", color:"var(--t4)", border:"1px solid var(--border)"}}>i</span>
+            </div>
           </div>
           <div className="flex-1 rounded-xl p-5 text-center" style={{background:"var(--bg2)", border:"1px solid var(--border)"}}>
             <div className="font-display text-[32px] font-medium">{totalSg}</div>
-            <p className="font-mono text-[10px] mt-1 tracking-[1px]" style={{color:"var(--t4)"}}>CONSULTATIONS</p>
+            <div className="flex items-center justify-center gap-1 mt-1">
+              <p className="font-mono text-[10px] tracking-[1px]" style={{color:"var(--t4)"}}>CONSULTATIONS</p>
+              <span title="Times you've consulted the Sage with a real challenge. Each session scans the wisdom archive for your blind spots." className="w-3.5 h-3.5 rounded-full flex items-center justify-center text-[8px] cursor-help" style={{background:"var(--bg4)", color:"var(--t4)", border:"1px solid var(--border)"}}>i</span>
+            </div>
           </div>
         </div>
 
