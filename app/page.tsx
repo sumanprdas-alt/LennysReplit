@@ -34,7 +34,7 @@ export default function LandingPage() {
       {/* Hero — clean, no AI label */}
       <div className="flex-1 flex flex-col items-center justify-center relative z-10 px-6 text-center" style={{ paddingTop: "4vh" }}>
         <h1 className="font-display text-[56px] md:text-[72px] font-normal leading-none tracking-tight fade-up-1" style={{ letterSpacing: "-2px", maxWidth: 700 }}>Think clearer.<br/>Build smarter.</h1>
-        <p className="text-[16px] md:text-[18px] mt-7 leading-relaxed max-w-[480px] fade-up-2" style={{ color: "var(--t3)" }}>The strategic advisor that draws on 300+ conversations with world-class founders to find what you're missing.</p>
+        <p className="text-[16px] md:text-[18px] mt-7 leading-relaxed max-w-[480px] fade-up-2" style={{ color: "var(--t3)" }}>The strategic advisor that draws on 300+ conversations with world-class product leaders to find what you're missing.</p>
 
         {/* Auth buttons */}
         <div className="flex gap-3 mt-10 fade-up-3">
