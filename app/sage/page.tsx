@@ -157,6 +157,12 @@ export default function SagePage() {
       </div>
     ) : (
       <div>
+        {/* User's input summary */}
+        <div className="rounded-xl px-4 py-3 mb-4 fade-up" style={{background:"var(--bg2)", border:"1px solid var(--border)"}}>
+          <p className="font-mono text-[10px] tracking-[1px] mb-1.5" style={{color:"var(--t4)"}}>YOUR INPUT</p>
+          <p className="text-[13px] leading-relaxed" style={{color:"var(--t3)"}}>{inp.length > 200 ? inp.slice(0, 200) + "..." : inp}</p>
+        </div>
+
         {/* Diagnostic header */}
         <div className="flex items-center gap-3.5 mb-5 fade-up">
           <svg width="48" height="48" viewBox="0 0 48 48">
